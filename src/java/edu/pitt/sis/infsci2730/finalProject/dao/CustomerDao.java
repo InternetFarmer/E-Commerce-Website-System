@@ -16,39 +16,39 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class CustomerDao {
 
-    private JdbcTemplate jdbcTemplate = null;
+    private static JdbcTemplate jdbcTemplate = null;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Customer login(String[] para) {
+    public static Customer login(final String[] para) {
         return jdbcTemplate.queryForObject("select * from Customer where customer_id = ? and password = ?",
                 para,
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR},
                 new CustomerRowMapper());
     }
 
-    public Customer getCustomerById(String id) {
+    public static Customer getCustomerById(final String id) {
         return jdbcTemplate.queryForObject("select * from Customer where customer_id = ?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
                 new CustomerRowMapper());
     }
 
-    public Customer getCustomerByCustomerName(String name) {
+    public static Customer getCustomerByCustomerName(final String name) {
         return jdbcTemplate.queryForObject("select * from Customer where customer_name = ?",
                 new Object[]{name},
                 new int[]{java.sql.Types.VARCHAR},
                 new CustomerRowMapper());
     }
 
-    public List<Customer> getAllCustomers() {
+    public static List<Customer> getAllCustomers() {
         return jdbcTemplate.query("select * from Customer",
                 new CustomerRowMapper());
     }
 
-    public int updateCustomerNameById(String[] para) {
+    public static int updateCustomerNameById(final String[] para) {
         int ret = jdbcTemplate.update("update Customer set customer_name = ? where customer_id = ?",
                 para,
                 new int[]{java.sql.Types.VARCHAR, java.sql.Types.INTEGER});
@@ -56,19 +56,19 @@ public class CustomerDao {
     }
 
     //bug
-    public int addCustomer(String[] para) {
+    public static int addCustomer(final String[] para) {
         return jdbcTemplate.update("insert into Customer (address_id, customer_name,password, gender,age,income) values (?,?,'12345',?,?,?)",
                 para,
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.CHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR});
     }
 
-    public List<Customer> SearchCustomer(String name) {
+    public static List<Customer> SearchCustomer(final String name) {
         return jdbcTemplate.query("select * from Customer where customer_name like '%" + name + "%'",
                 new CustomerRowMapper());
 
     }
 
-    public int deleteCustomerById(String id) {
+    public static int deleteCustomerById(final String id) {
         int ret = jdbcTemplate.update("delete from Customer where customer_id = ?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER});
