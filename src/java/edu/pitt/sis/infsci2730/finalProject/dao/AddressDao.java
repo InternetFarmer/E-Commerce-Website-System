@@ -61,15 +61,12 @@ public class AddressDao {
      * @param para
      * @return
      */
-    public static AddressDBModel addAddress(final String[] para) throws SQLException {
-        String sql = "insert into Address (city,street,state_,zipCode) values (?,?,?,?)";
+//    public static int addAddress(final String[] para) throws SQLException {
+//        String sql = "insert into Address (city,street,state_,zipCode) values (?,?,?,?)";
 //        return jdbcTemplate.update(sql,
 //                para,
 //                new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR});
-        return jdbcTemplate.queryForObject(sql, para,
-                new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR},
-                new AddressRowMapper());
-    }
+//    }
 
     public static Long addAddresss(final String[] para) throws SQLException {
 

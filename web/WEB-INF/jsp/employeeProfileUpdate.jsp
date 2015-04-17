@@ -10,6 +10,8 @@
     }
     Address currentAddress = (Address) AddressHandler.getAddressHandler().getAddressById(currentEmployee.getAddress_id() + "");
 %>
+
+<%@ include file="include.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,14 +21,8 @@
         <title>Update Employee Profile</title>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/dbStyle.css">
-
-        <!-- js -->
-        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>    
-        <script src="../js/main.js"></script>
-        <!-- jQuery-->
+        <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />">
+        <link rel="stylesheet" href="<c:url value='/resources/css/stylesheet.css' />">
 
     </head>
 
@@ -46,7 +42,6 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="employeeProfile.jsp">Profile</a></li>
-                        <li><a href="shoppingBag.jsp">Shopping Bag</a></li>
                         <li><a href="../Logout">Log out</a></li>
                     </ul>
 
@@ -58,12 +53,10 @@
             <div class="row-main">
                 <div class="col-sm-2 col-sm-offset-1 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="startShopping.jsp">Start Shopping</a></li>
                         <li><a href="product.jsp">Manage Products</a></li>
                         <li><a href="category.jsp">Product Category</a></li>
                         <li><a href="customer.jsp">Customer</a></li>
                         <li><a href="transaction.jsp">Transaction</a></li>
-                        <li><a href="storeRegion.jsp">Store & Region</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-7 col-sm-offset-3 main">
@@ -143,5 +136,7 @@
             </div>
         </div>
     </body>
+    <%@ include file="footer.jsp" %>
+    <script src="<c:url value='/resources/js/login.js'/>"></script>
 </html>
 
