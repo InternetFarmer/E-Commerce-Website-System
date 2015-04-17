@@ -1,16 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
+
+<%@ include file="/WEB-INF/jsp/include.jsp" %>
 <html>
     <head>
-        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Log in</title>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/stylesheet.css">
+        <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />">
+        <link rel="stylesheet" href="<c:url value='/resources/css/stylesheet.css' />">
 
 
     </head>
@@ -78,6 +79,6 @@
             </div>
         </div>
     </body>
-    <%@ include file="../html/footer.html" %>
+    <%@ include file="WEB-INF/jsp/footer.jsp" %>
 </html>
 
