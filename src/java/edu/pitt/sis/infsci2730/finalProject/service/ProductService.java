@@ -6,10 +6,7 @@
 package edu.pitt.sis.infsci2730.finalProject.service;
 
 import edu.pitt.sis.infsci2730.finalProject.dao.ProductDao;
-import edu.pitt.sis.infsci2730.finalProject.model.ProductCategoryDBModel;
 import edu.pitt.sis.infsci2730.finalProject.model.ProductDBModel;
-import edu.pitt.sis.infsci2730.finalProject.utils.ProductCategoryRowMapper;
-import edu.pitt.sis.infsci2730.finalProject.utils.ProductRowMapper;
 import java.sql.SQLException;
 import java.util.List;
 
