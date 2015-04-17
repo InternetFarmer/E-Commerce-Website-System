@@ -13,10 +13,17 @@ import org.springframework.web.bind.annotation.*;
  * @author Wu
  */
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/index")
 public class LoginController {
-        @RequestMapping(value = "/login", method = RequestMethod.GET, params="myParam=myValue")  
-    public void login(){
+
+    @RequestMapping("/login")
+    public void login(@RequestParam(value="id") Integer id) {
         
+
+    }
+    
+    @RequestMapping("/signup")
+    public void signup(@RequestParam(value="id") Integer id) {
+
     }
 }

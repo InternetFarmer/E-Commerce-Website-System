@@ -36,7 +36,6 @@ public class ZZTest {
                 System.out.println("GetRecordByProductID "+r.getProduct_id());
             }
             
-            dao.UpdateRecordByTransactionIDAndProductID(new String[] {"3","80","2","2"});
 
 //            System.out.println("GetTransaction");
 //            SqlRowSet rows = dao.GetTransaction("5");

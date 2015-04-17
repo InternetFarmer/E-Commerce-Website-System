@@ -7,6 +7,7 @@ package edu.pitt.sis.infsci2730.finalProject.dao;
 
 import edu.pitt.sis.infsci2730.finalProject.utils.ProductCategoryRowMapper;
 import edu.pitt.sis.infsci2730.finalProject.model.ProductCategory;
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -28,7 +29,7 @@ public class ProductCategoryDao {
      * @param id
      * @return Product Category
      */
-    public static ProductCategory getProductCategoryById(final String id) {
+    public static ProductCategory getProductCategoryById(final String id) throws SQLException {
         String sql = "select * from Product_Category where category_id = ?";
         List<ProductCategory> list = jdbcTemplate.query(sql,
                 new Object[]{id},
@@ -41,7 +42,7 @@ public class ProductCategoryDao {
         }
     }
 
-    public static List<ProductCategory> getProductCategory() {
+    public static List<ProductCategory> getProductCategory() throws SQLException {
         String sql = "select * from Product_Category";
         List<ProductCategory> list = jdbcTemplate.query(sql, new ProductCategoryRowMapper());
         if (list != null) {
@@ -57,11 +58,11 @@ public class ProductCategoryDao {
      * @param para
      * @return int
      */
-    public static int updateProductCategoryById(final String[] para) {
+    public static int updateProductCategoryById(final String[] para) throws SQLException {
         String sql = "update Product_Category set category_name = ? where category_id = ?";
-        return jdbcTemplate.update(sql, 
-                para, 
-                new int[] {java.sql.Types.VARCHAR,java.sql.Types.INTEGER});
+        return jdbcTemplate.update(sql,
+                para,
+                new int[]{java.sql.Types.VARCHAR, java.sql.Types.INTEGER});
     }
 
     /**
@@ -70,9 +71,9 @@ public class ProductCategoryDao {
      * @param para
      * @return ProductCategory
      */
-    public static int addProductCategory(final String[] para) {
+    public static int addProductCategory(final String[] para) throws SQLException {
         String sql = "insert into Product_Category (category_name) values (?)";
-        return jdbcTemplate.update(sql, para, new int[] {java.sql.Types.VARCHAR});
+        return jdbcTemplate.update(sql, para, new int[]{java.sql.Types.VARCHAR});
     }
 
     /**
@@ -81,10 +82,10 @@ public class ProductCategoryDao {
      * @param id
      * @return int
      */
-    public static int deleteProductCategoryById(final String id) {
+    public static int deleteProductCategoryById(final String id) throws SQLException {
         String sql = "delete from Product_Category where category_id = ?";
-        return jdbcTemplate.update(sql, 
-                new Object[] {id}, 
-                new int[] {java.sql.Types.INTEGER});
+        return jdbcTemplate.update(sql,
+                new Object[]{id},
+                new int[]{java.sql.Types.INTEGER});
     }
 }
