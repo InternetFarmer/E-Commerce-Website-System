@@ -4,20 +4,21 @@
     Author     : yanyanzhou
 --%>
 
-<%@page import="Bean.Customer"%>
-<%@page import="Handlers.TransactionHandler"%>
-<%@page import="Bean.Transaction"%>
-<%@page import="java.util.List"%>
+<%@page import="edu.pitt.sis.infsci2730.finalProject.viewModel.Customer"%>
+<%@page import="edu.pitt.sis.infsci2730.finalProject.viewModel.Transaction"%>
+<%@page import="edu.pitt.sis.infsci2730.finalProject.service.TransactionService"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    Customer currentEmployee = (Customer) request.getSession().getAttribute("Customer");
-    if (currentEmployee == null) {
+    Customer customer = (Customer) request.getSession().getAttribute("Customer");
+    if (customer == null) {
         response.sendRedirect("../index.jsp");
         return;
     }
 %>
+
+<%@ include file="include.jsp" %>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -26,15 +27,8 @@
         <title>Customer Order History</title>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/dbStyle.css">
-
-        <!-- js -->
-        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/main.js"></script>
-        <script src="../js/db.js"></script>
-
+        <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />">
+        <link rel="stylesheet" href="<c:url value='/resources/css/stylesheet.css' />">
 
     </head>
 
@@ -56,7 +50,7 @@
                         <li><a href="customerProfile.jsp">Profile</a></li>
                         <li><a href="customerHomepage.jsp">Search Products</a></li>
                         <li><a href="customerOrderHistory.jsp">Order History</a></li>
-                        <li><a href="customerStartShopping.jsp">Stores & Regions</a></li>
+                        <li><a href=".jsp">Shopping Bag</a></li>
                         <li><a href="../Logout">Log out</a></li>
                     </ul>
 
@@ -85,8 +79,6 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Date</th>
-                                            <th>Customer ID</th>
-                                            <th>Salesperson ID</th>
                                             <th>Total Amount</th>
                                             <th>Functions</th>
                                         </tr>
@@ -99,8 +91,6 @@
                                                     out.println("<tr>");
                                                     out.println("<td>" + t.getTransaction_id() + "</td>");
                                                     out.println("<td>" + t.getTransaction_date() + "</td>");
-                                                    out.println("<td>" + t.getCustomer_id() + "</td>");
-                                                    out.println("<td>" + t.getSalesperson_id() + "</td>");
                                                     out.println("<td>" + TransactionHandler.getTransactionHandler().GetTranactionTotalAmount(t.getTransaction_id() + "") + "</td>");
                                         %>
                                     <td>
@@ -153,4 +143,6 @@
         </div>
 
     </body>
+    <%@ include file="footer.jsp" %>
+    <script src="<c:url value='/resources/js/login.js'/>"></script>
 </html>
