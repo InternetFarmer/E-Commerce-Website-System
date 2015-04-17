@@ -50,7 +50,7 @@
                         <li><a href="customerProfile.jsp">Profile</a></li>
                         <li><a href="customerHomepage.jsp">Search Products</a></li>
                         <li><a href="customerOrderHistory.jsp">Order History</a></li>
-                        <li><a href=".jsp">Shopping Bag</a></li>
+                        <li><a href="shoppingBag.jsp">Shopping Bag</a></li>
                         <li><a href="../Logout">Log out</a></li>
                     </ul>
 
