@@ -52,24 +52,13 @@
                                     <input type="password" id="password" class="form-control" placeholder="Password" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 col-sm-offset-2 radio-inline">
-                                    <input type="radio" value="Customer" name="type" id="customer"> Customer
-                                </label>
-                                <label class="col-sm-3 radio-inline">
-                                    <input type="radio" value="Employee" name="type" id="employee"> Employee
-                                </label>
-                                <label class="col-sm-3 radio-inline">
-                                    <input type="radio" value="Admin" name="type" id="admin"> Admin
-                                </label>
-                            </div>
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-4">
                                     <button class="btn btn-primary btn-block" type="button" onclick="login()">Log In</button>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button class="btn btn-primary btn-block" type="button" onclick="window.location.href='JSP/browse.jsp'">Browse</button>
+                                    <button class="btn btn-primary btn-block" type="button">Browse</button>
                                 </div>
 
                             </div>
