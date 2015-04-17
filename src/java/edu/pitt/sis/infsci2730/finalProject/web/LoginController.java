@@ -23,9 +23,5 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 public class LoginController {
 
-    @RequestMapping
-    public String page() {
-        return "index";
-    }
-    
 }
+
