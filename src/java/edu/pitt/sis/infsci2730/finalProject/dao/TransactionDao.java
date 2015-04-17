@@ -25,7 +25,7 @@ public class TransactionDao {
     }
 
     //search transactions and records by transaction_id
-    public static Transaction GetTransactionByID(final String id) {
+    public static Transaction GetTransactionByID(final String id) throws SQLException {
         String sql = "SELECT * FROM Transactions where transaction_id=?";
         return jdbcTemplate.queryForObject(sql,
                 new Object[]{id},
@@ -34,7 +34,7 @@ public class TransactionDao {
     }
 
     //search transactions by customer_id
-    public static List<Transaction> GetTransactionByCustomerID(final String id) {
+    public static List<Transaction> GetTransactionByCustomerID(final String id) throws SQLException {
         String sql = "select * from Transactions t where t.customer_id=?";
         return jdbcTemplate.query(sql,
                 new Object[]{id},
@@ -54,7 +54,7 @@ public class TransactionDao {
                 new int[]{java.sql.Types.INTEGER});
     }
 
-    public static List<Transaction> GetAllTransaction() {
+    public static List<Transaction> GetAllTransaction() throws SQLException {
         String sql = "select * from Transactions";
         return jdbcTemplate.query(sql, new TransactionRowMapper());
     }

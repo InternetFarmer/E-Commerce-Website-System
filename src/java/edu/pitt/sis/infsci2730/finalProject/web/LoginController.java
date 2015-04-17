@@ -23,6 +23,7 @@ public class LoginController {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     @RequestMapping
     public String page() {
         return "index";
@@ -45,6 +46,8 @@ public class LoginController {
 =======
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> origin/master
     @RequestMapping("/login")
     public void login(@RequestParam(value="id") Integer id) {
         
@@ -55,6 +58,9 @@ public class LoginController {
     public void signup(@RequestParam(value="id") Integer id) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 =======
 >>>>>>> origin/master

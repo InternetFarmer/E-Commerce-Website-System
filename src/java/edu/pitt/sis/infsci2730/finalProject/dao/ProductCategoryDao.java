@@ -29,7 +29,7 @@ public class ProductCategoryDao {
      * @param id
      * @return Product Category
      */
-    public static ProductCategory getProductCategoryById(final String id) {
+    public static ProductCategory getProductCategoryById(final String id) throws SQLException {
         String sql = "select * from Product_Category where category_id = ?";
         List<ProductCategory> list = jdbcTemplate.query(sql,
                 new Object[]{id},
@@ -42,7 +42,7 @@ public class ProductCategoryDao {
         }
     }
 
-    public static List<ProductCategory> getProductCategory() {
+    public static List<ProductCategory> getProductCategory() throws SQLException {
         String sql = "select * from Product_Category";
         List<ProductCategory> list = jdbcTemplate.query(sql, new ProductCategoryRowMapper());
         if (list != null) {

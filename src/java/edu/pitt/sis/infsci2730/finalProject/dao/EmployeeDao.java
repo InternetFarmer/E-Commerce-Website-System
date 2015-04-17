@@ -30,7 +30,7 @@ public class EmployeeDao {
      * @param password
      * @return
      */
-    public static Employee checkEmployee(final String id, final String password) {
+    public static Employee checkEmployee(final String id, final String password) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Employee where employee_id = ? and password = ?",
                 new Object[]{id, password},
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR},
@@ -43,7 +43,7 @@ public class EmployeeDao {
      * @param id
      * @return Employee
      */
-    public static Employee getEmployeeById(final String id) {
+    public static Employee getEmployeeById(final String id) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Employee where employee_id = ?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
@@ -56,12 +56,12 @@ public class EmployeeDao {
      * @param name
      * @return List
      */
-    public static List<Employee> getEmployeeByEmployeeName(final String name) {
+    public static List<Employee> getEmployeeByEmployeeName(final String name) throws SQLException {
         return jdbcTemplate.query("select * from Employee where employee_name like '%" + name + "%'",
                 new EmployeeRowMapper());
     }
 
-    public static List<Employee> getAllEmployees() {
+    public static List<Employee> getAllEmployees() throws SQLException {
         return jdbcTemplate.query("select * from Employee",
                 new EmployeeRowMapper());
     }

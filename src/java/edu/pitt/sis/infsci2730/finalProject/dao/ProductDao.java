@@ -26,14 +26,14 @@ public class ProductDao {
     }
 
     //search products by id
-    public static Product GetProductByID(final String id) {
+    public static Product GetProductByID(final String id) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Product where product_id=?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
                 new ProductRowMapper());
     }
 
-    public static String GetProductCategoryNameById(final String id) {
+    public static String GetProductCategoryNameById(final String id) throws SQLException {
         ProductCategory pc = new ProductCategory();
         pc = jdbcTemplate.queryForObject("select * from Product,Product_Category "
                 + "where Product.category_id = Product_Category.category_id "
@@ -44,19 +44,19 @@ public class ProductDao {
         return pc.getCategory_name();
     }
 
-    public static List<Product> GetAllProduct() {
+    public static List<Product> GetAllProduct() throws SQLException {
         return jdbcTemplate.query("select * from Product",
                 new ProductRowMapper());
     }
 
     //search products by name
-    public static List<Product> GetProductByName(final String name) {
+    public static List<Product> GetProductByName(final String name) throws SQLException {
         return jdbcTemplate.query("select * from Product where product_name like '%" + name + "%'",
                 new ProductRowMapper());
     }
 
     //search products by catagory_id
-    public static List<Product> GetProductByCategory(final String id) {
+    public static List<Product> GetProductByCategory(final String id) throws SQLException {
         return jdbcTemplate.query("select * from Product where category_id=?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
@@ -64,7 +64,7 @@ public class ProductDao {
     }
 
     //search products by price
-    public static List<Product> GetProductByPrice(final String[] array) {
+    public static List<Product> GetProductByPrice(final String[] array) throws SQLException {
         return jdbcTemplate.query("select * from Product where price>=? and price<=?",
                 array,
                 new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR},
@@ -72,7 +72,7 @@ public class ProductDao {
     }
 
     //search product with multiply parameters (category,name,price)
-    public static List<Product> GetProduct(final String[] array) {
+    public static List<Product> GetProduct(final String[] array) throws SQLException {
         return jdbcTemplate.query("select * from Product where category_id =? and product_name like '%" + array[1] + "%' and price>=? and price<=?",
                 new Object[]{array[0], array[2], array[3]},
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR},

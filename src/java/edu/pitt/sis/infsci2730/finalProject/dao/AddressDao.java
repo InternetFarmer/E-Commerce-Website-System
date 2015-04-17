@@ -23,7 +23,7 @@ public class AddressDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public static Address getAddressById(final String id) {
+    public static Address getAddressById(final String id) throws SQLException {
         String sql = "select * from Address where address_id = ?";
         List<Address> list = jdbcTemplate.query(sql,
                 new Object[]{id},

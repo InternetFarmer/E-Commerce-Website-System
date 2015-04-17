@@ -24,7 +24,7 @@ public class RecordDao {
     }
 
     //search record by transaction_id
-    public static List<Record> GetRecordByTransactionID(final String id) {
+    public static List<Record> GetRecordByTransactionID(final String id) throws SQLException {
         String sql = "select * from Record where transaction_id=?";
         return jdbcTemplate.query(sql,
                 new Object[]{id},
@@ -33,7 +33,7 @@ public class RecordDao {
     }
 
     //search record by product_id
-    public static List<Record> GetRecordByProductID(final String id) {
+    public static List<Record> GetRecordByProductID(final String id) throws SQLException {
         String sql = "select * from Record where product_id=?";
         return jdbcTemplate.query(sql,
                 new Object[]{id},

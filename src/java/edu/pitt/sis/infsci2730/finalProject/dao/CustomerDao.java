@@ -23,28 +23,28 @@ public class CustomerDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public static Customer login(final String[] para) {
+    public static Customer login(final String[] para) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Customer where customer_id = ? and password = ?",
                 para,
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR},
                 new CustomerRowMapper());
     }
 
-    public static Customer getCustomerById(final String id) {
+    public static Customer getCustomerById(final String id) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Customer where customer_id = ?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
                 new CustomerRowMapper());
     }
 
-    public static Customer getCustomerByCustomerName(final String name) {
+    public static Customer getCustomerByCustomerName(final String name) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Customer where customer_name = ?",
                 new Object[]{name},
                 new int[]{java.sql.Types.VARCHAR},
                 new CustomerRowMapper());
     }
 
-    public static List<Customer> getAllCustomers() {
+    public static List<Customer> getAllCustomers() throws SQLException {
         return jdbcTemplate.query("select * from Customer",
                 new CustomerRowMapper());
     }
@@ -63,7 +63,7 @@ public class CustomerDao {
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.CHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR});
     }
 
-    public static List<Customer> SearchCustomer(final String name) {
+    public static List<Customer> SearchCustomer(final String name) throws SQLException {
         return jdbcTemplate.query("select * from Customer where customer_name like '%" + name + "%'",
                 new CustomerRowMapper());
 
