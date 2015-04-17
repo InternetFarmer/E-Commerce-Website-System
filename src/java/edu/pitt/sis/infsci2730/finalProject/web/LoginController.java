@@ -28,9 +28,4 @@ public class LoginController {
         return "index";
     }
     
-    @RequestMapping(value="/test",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Customer login(@RequestBody final Customer customer) {
-        return customer;
-    }
 }
