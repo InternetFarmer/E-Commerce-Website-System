@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.bean.ProductCategory;
+import edu.pitt.sis.infsci2730.finalProject.model.ProductCategory;
 import edu.pitt.sis.infsci2730.finalProject.dao.ProductCategoryDao;
 import java.util.List;
 

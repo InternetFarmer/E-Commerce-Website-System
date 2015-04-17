@@ -5,9 +5,9 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.bean.Transaction;
+import edu.pitt.sis.infsci2730.finalProject.model.Transaction;
 import edu.pitt.sis.infsci2730.finalProject.dao.TransactionDao;
-import edu.pitt.sis.infsci2730.finalProject.rowMapper.TransactionRowMapper;
+import edu.pitt.sis.infsci2730.finalProject.utils.TransactionRowMapper;
 import java.util.List;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 

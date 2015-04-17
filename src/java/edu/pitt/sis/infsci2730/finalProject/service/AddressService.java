@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.bean.Address;
+import edu.pitt.sis.infsci2730.finalProject.model.Address;
 import edu.pitt.sis.infsci2730.finalProject.dao.AddressDao;
 
 /**

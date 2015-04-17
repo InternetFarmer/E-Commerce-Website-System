@@ -5,8 +5,8 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.bean.Employee;
-import edu.pitt.sis.infsci2730.finalProject.rowMapper.EmployeeRowMapper;
+import edu.pitt.sis.infsci2730.finalProject.model.Employee;
+import edu.pitt.sis.infsci2730.finalProject.utils.EmployeeRowMapper;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 

@@ -5,8 +5,8 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.rowMapper.AddressRowMapper;
-import edu.pitt.sis.infsci2730.finalProject.bean.Address;
+import edu.pitt.sis.infsci2730.finalProject.utils.AddressRowMapper;
+import edu.pitt.sis.infsci2730.finalProject.model.Address;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 

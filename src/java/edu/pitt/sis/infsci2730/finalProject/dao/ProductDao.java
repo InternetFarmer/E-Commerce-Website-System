@@ -5,10 +5,10 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.bean.Product;
-import edu.pitt.sis.infsci2730.finalProject.bean.ProductCategory;
-import edu.pitt.sis.infsci2730.finalProject.rowMapper.ProductCategoryRowMapper;
-import edu.pitt.sis.infsci2730.finalProject.rowMapper.ProductRowMapper;
+import edu.pitt.sis.infsci2730.finalProject.model.Product;
+import edu.pitt.sis.infsci2730.finalProject.model.ProductCategory;
+import edu.pitt.sis.infsci2730.finalProject.utils.ProductCategoryRowMapper;
+import edu.pitt.sis.infsci2730.finalProject.utils.ProductRowMapper;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 

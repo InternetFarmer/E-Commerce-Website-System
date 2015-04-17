@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.bean.Employee;
+import edu.pitt.sis.infsci2730.finalProject.model.Employee;
 import edu.pitt.sis.infsci2730.finalProject.dao.EmployeeDao;
 import java.util.List;
 

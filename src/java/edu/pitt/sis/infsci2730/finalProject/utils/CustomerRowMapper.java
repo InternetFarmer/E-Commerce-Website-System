@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.pitt.sis.infsci2730.finalProject.rowMapper;
+package edu.pitt.sis.infsci2730.finalProject.utils;
 
 
-import edu.pitt.sis.infsci2730.finalProject.bean.Customer;
+import edu.pitt.sis.infsci2730.finalProject.model.Customer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;

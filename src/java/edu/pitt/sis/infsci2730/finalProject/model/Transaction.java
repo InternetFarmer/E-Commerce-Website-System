@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.pitt.sis.infsci2730.finalProject.bean;
+package edu.pitt.sis.infsci2730.finalProject.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
