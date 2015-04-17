@@ -20,33 +20,33 @@ public class CustomerService {
         return CustomerDao.login(para);
     }
 
-    public CustomerDBModel getCustomerById(final String id) {
+    public CustomerDBModel getCustomerById(final String id) throws SQLException {
         return CustomerDao.getCustomerById(id);
     }
 
-    public CustomerDBModel getCustomerByCustomerName(final String name) {
+    public CustomerDBModel getCustomerByCustomerName(final String name) throws SQLException {
         return CustomerDao.getCustomerByCustomerName(name);
     }
 
-    public List<CustomerDBModel> getAllCustomers() {
+    public List<CustomerDBModel> getAllCustomers() throws SQLException {
         return CustomerDao.getAllCustomers();
     }
 
-    public int updateCustomerNameById(final String[] para) {
+    public int updateCustomerNameById(final String[] para) throws SQLException {
         return CustomerDao.updateCustomerNameById(para);
     }
 
     //bug
-    public int addCustomer(final String[] para) {
+    public int addCustomer(final String[] para) throws SQLException {
         return CustomerDao.addCustomer(para);
     }
 
-    public List<CustomerDBModel> SearchCustomer(final String name) {
+    public List<CustomerDBModel> SearchCustomer(final String name) throws SQLException {
         return CustomerDao.SearchCustomer(name);
 
     }
 
-    public int deleteCustomerById(final String id) {
+    public int deleteCustomerById(final String id) throws SQLException {
         return CustomerDao.deleteCustomerById(id);
     }
 

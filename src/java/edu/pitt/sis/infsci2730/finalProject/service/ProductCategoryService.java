@@ -7,6 +7,7 @@ package edu.pitt.sis.infsci2730.finalProject.service;
 
 import edu.pitt.sis.infsci2730.finalProject.model.ProductCategoryDBModel;
 import edu.pitt.sis.infsci2730.finalProject.dao.ProductCategoryDao;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,23 +16,23 @@ import java.util.List;
  */
 public class ProductCategoryService {
 
-    public ProductCategoryDBModel getProductCategoryById(final String id) {
+    public ProductCategoryDBModel getProductCategoryById(final String id) throws SQLException {
         return ProductCategoryDao.getProductCategoryById(id);
     }
 
-    public List<ProductCategoryDBModel> getProductCategory() {
+    public List<ProductCategoryDBModel> getProductCategory() throws SQLException {
         return ProductCategoryDao.getProductCategory();
     }
 
-    public int updateProductCategoryById(final String[] para) {
+    public int updateProductCategoryById(final String[] para) throws SQLException {
         return ProductCategoryDao.updateProductCategoryById(para);
     }
 
-    public int addProductCategory(final String[] para) {
+    public int addProductCategory(final String[] para) throws SQLException {
         return ProductCategoryDao.addProductCategory(para);
     }
 
-    public int deleteProductCategoryById(final String id) {
+    public int deleteProductCategoryById(final String id) throws SQLException {
         return ProductCategoryDao.deleteProductCategoryById(id);
     }
 }
