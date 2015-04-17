@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class ProductCategoryDao {
 
-    private JdbcTemplate jdbcTemplate = null;
+    private static JdbcTemplate jdbcTemplate = null;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -28,7 +28,7 @@ public class ProductCategoryDao {
      * @param id
      * @return Product Category
      */
-    public ProductCategory getProductCategoryById(String id) {
+    public static ProductCategory getProductCategoryById(final String id) {
         String sql = "select * from Product_Category where category_id = ?";
         List<ProductCategory> list = jdbcTemplate.query(sql,
                 new Object[]{id},
@@ -41,7 +41,7 @@ public class ProductCategoryDao {
         }
     }
 
-    public List<ProductCategory> getProductCategory() {
+    public static List<ProductCategory> getProductCategory() {
         String sql = "select * from Product_Category";
         List<ProductCategory> list = jdbcTemplate.query(sql, new ProductCategoryRowMapper());
         if (list != null) {
@@ -57,7 +57,7 @@ public class ProductCategoryDao {
      * @param para
      * @return int
      */
-    public int updateProductCategoryById(String[] para) {
+    public static int updateProductCategoryById(final String[] para) {
         String sql = "update Product_Category set category_name = ? where category_id = ?";
         return jdbcTemplate.update(sql, 
                 para, 
@@ -70,7 +70,7 @@ public class ProductCategoryDao {
      * @param para
      * @return ProductCategory
      */
-    public int addProductCategory(String[] para) {
+    public static int addProductCategory(final String[] para) {
         String sql = "insert into Product_Category (category_name) values (?)";
         return jdbcTemplate.update(sql, para, new int[] {java.sql.Types.VARCHAR});
     }
@@ -81,7 +81,7 @@ public class ProductCategoryDao {
      * @param id
      * @return int
      */
-    public int deleteProductCategoryById(String id) {
+    public static int deleteProductCategoryById(final String id) {
         String sql = "delete from Product_Category where category_id = ?";
         return jdbcTemplate.update(sql, 
                 new Object[] {id}, 

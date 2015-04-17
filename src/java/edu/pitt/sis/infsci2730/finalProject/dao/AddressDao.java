@@ -16,13 +16,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class AddressDao {
 
-    private JdbcTemplate jdbcTemplate = null;
+    private static JdbcTemplate jdbcTemplate = null;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Address getAddressById(String id) {
+    public static Address getAddressById(final String id) {
         String sql = "select * from Address where address_id = ?";
         List<Address> list = jdbcTemplate.query(sql,
                 new Object[]{id},
@@ -41,7 +41,7 @@ public class AddressDao {
      * @param para
      * @return
      */
-    public int updateAddressById(String[] para) {
+    public static int updateAddressById(final String[] para) {
         String sql = "update Address set state_ = ?, city = ?,street = ?, zipCode = ? where "
                 + "address_id = ?";
         return jdbcTemplate.update(sql, para,
@@ -54,7 +54,7 @@ public class AddressDao {
      * @param para
      * @return
      */
-    public int addAddress(String[] para) {
+    public static int addAddress(final String[] para) {
         String sql = "insert into Address (city,street,state_,zipCode) values (?,?,?,?)";
         return jdbcTemplate.update(sql, 
                 para,
@@ -67,7 +67,7 @@ public class AddressDao {
      * @param id
      * @return
      */
-    public int deleteAddressById(String id) {
+    public static int deleteAddressById(final String id) {
         String sql = "delete from Address where address_id = ?";
         return jdbcTemplate.update(sql, 
                 new Object[] {id}, 

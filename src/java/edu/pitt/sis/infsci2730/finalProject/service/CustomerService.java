@@ -7,7 +7,6 @@ package edu.pitt.sis.infsci2730.finalProject.service;
 
 import edu.pitt.sis.infsci2730.finalProject.bean.Customer;
 import edu.pitt.sis.infsci2730.finalProject.dao.CustomerDao;
-import edu.pitt.sis.infsci2730.finalProject.rowMapper.CustomerRowMapper;
 import java.util.List;
 
 /**

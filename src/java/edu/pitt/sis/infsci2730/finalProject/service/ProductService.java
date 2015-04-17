@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.pitt.sis.infsci2730.finalProject.dao;
+package edu.pitt.sis.infsci2730.finalProject.service;
 
 /**
  *
  * @author yanyanzhou
  */
-class Product {
+public class ProductService {
     
 }
