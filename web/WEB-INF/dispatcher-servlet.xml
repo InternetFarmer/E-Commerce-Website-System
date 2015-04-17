@@ -41,6 +41,7 @@
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
     
-    <context:component-scan base-package="edu.pitt.sis.infsci2730.finalProject.web" />  
+    <context:component-scan base-package="edu.pitt.sis.infsci2730.finalProject.web" /> 
+    <context:component-scan base-package="edu.pitt.sis.infsci2730.finalProject.rest" />  
     <mvc:annotation-driven /> 
 </beans>
