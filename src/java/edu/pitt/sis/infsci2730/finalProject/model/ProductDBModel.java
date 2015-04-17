@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Wu
  */
 
-public class Product implements Serializable {
+public class ProductDBModel implements Serializable {
     
     private int product_id;
     private String product_name;
@@ -20,7 +20,7 @@ public class Product implements Serializable {
     private int price;
     private int category_id;
     private int buying_price;
-    private ProductCategory category;
+    private ProductCategoryDBModel category;
     
     public int getProduct_id() {
         return product_id;
@@ -70,11 +70,11 @@ public class Product implements Serializable {
         this.buying_price = buying_price;
     }
 
-    public ProductCategory getCategory() {
+    public ProductCategoryDBModel getCategory() {
         return category;
     }
 
-    public void setCategory(ProductCategory category) {
+    public void setCategory(ProductCategoryDBModel category) {
         this.category = category;
     }
     

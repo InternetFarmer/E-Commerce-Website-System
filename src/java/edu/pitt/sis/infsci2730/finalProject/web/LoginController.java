@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.web;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Customer;
+import edu.pitt.sis.infsci2730.finalProject.model.CustomerDBModel;
 import edu.pitt.sis.infsci2730.finalProject.service.CustomerService;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -35,7 +35,7 @@ public class LoginController {
         CustomerService customerservice = new CustomerService();
         
         try{
-           Customer customer = customerservice.login(new String[] {});
+           CustomerDBModel customer = customerservice.login(new String[] {});
            if(customer == null){
                return 
            }

@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Record;
+import edu.pitt.sis.infsci2730.finalProject.model.RecordDBModel;
 import edu.pitt.sis.infsci2730.finalProject.dao.RecordDao;
 import java.util.List;
 
@@ -17,12 +17,12 @@ public class RecordService {
 
     //search record by transaction_id
 
-    public List<Record> GetRecordByTransactionID(final String id) {
+    public List<RecordDBModel> GetRecordByTransactionID(final String id) {
         return RecordDao.GetRecordByProductID(id);
     }
 
     //search record by product_id
-    public List<Record> GetRecordByProductID(final String id) {
+    public List<RecordDBModel> GetRecordByProductID(final String id) {
         return RecordDao.GetRecordByProductID(id);
     }
 

@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  *
  * @author Wu
  */
-public class Transaction implements Serializable {
+public class TransactionDBModel implements Serializable {
     
     private int transaction_id;
     private Timestamp transaction_date;

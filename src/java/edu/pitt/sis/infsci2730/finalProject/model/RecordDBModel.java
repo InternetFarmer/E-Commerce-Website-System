@@ -11,13 +11,13 @@ import java.io.Serializable;
  *
  * @author Wu
  */
-public class Record implements Serializable {
+public class RecordDBModel implements Serializable {
 
     private int transaction_id;
     private int product_id;
     private int amount;
     private int price;
-    private Product product;
+    private ProductDBModel product;
 
     public int getTransaction_id() {
         return transaction_id;
@@ -51,11 +51,11 @@ public class Record implements Serializable {
         this.price = price;
     }
 
-    public Product getProduct() {
+    public ProductDBModel getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductDBModel product) {
         this.product = product;
     }
 }

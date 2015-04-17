@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Customer;
+import edu.pitt.sis.infsci2730.finalProject.model.CustomerDBModel;
 import edu.pitt.sis.infsci2730.finalProject.dao.CustomerDao;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,19 +16,19 @@ import java.util.List;
  */
 public class CustomerService {
 
-    public Customer login(final String[] para) throws SQLException {
+    public CustomerDBModel login(final String[] para) throws SQLException {
         return CustomerDao.login(para);
     }
 
-    public Customer getCustomerById(final String id) {
+    public CustomerDBModel getCustomerById(final String id) {
         return CustomerDao.getCustomerById(id);
     }
 
-    public Customer getCustomerByCustomerName(final String name) {
+    public CustomerDBModel getCustomerByCustomerName(final String name) {
         return CustomerDao.getCustomerByCustomerName(name);
     }
 
-    public List<Customer> getAllCustomers() {
+    public List<CustomerDBModel> getAllCustomers() {
         return CustomerDao.getAllCustomers();
     }
 
@@ -41,7 +41,7 @@ public class CustomerService {
         return CustomerDao.addCustomer(para);
     }
 
-    public List<Customer> SearchCustomer(final String name) {
+    public List<CustomerDBModel> SearchCustomer(final String name) {
         return CustomerDao.SearchCustomer(name);
 
     }

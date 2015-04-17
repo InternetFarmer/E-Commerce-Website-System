@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.utils;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Transaction;
+import edu.pitt.sis.infsci2730.finalProject.model.TransactionDBModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,10 +14,10 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author yanyanzhou
  */
-public class TransactionRowMapper implements RowMapper<Transaction> {
+public class TransactionRowMapper implements RowMapper<TransactionDBModel> {
     
-    public Transaction mapRow(ResultSet rs, int index) throws SQLException {
-        Transaction transaction = new Transaction();
+    public TransactionDBModel mapRow(ResultSet rs, int index) throws SQLException {
+        TransactionDBModel transaction = new TransactionDBModel();
         
         transaction.setTransaction_id(rs.getInt("TRANSACTION_ID"));
         transaction.setTransaction_date(rs.getTimestamp("TRANSACTION_DATE"));

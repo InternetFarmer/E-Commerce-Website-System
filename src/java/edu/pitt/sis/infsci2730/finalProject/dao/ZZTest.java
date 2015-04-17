@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Record;
+import edu.pitt.sis.infsci2730.finalProject.model.RecordDBModel;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,13 +26,13 @@ public class ZZTest {
 //            String[] b={"2","2","3","15"};
 //            System.out.println(dao.InsertRecordByTransactionIDAndProductId(a));
 //            System.out.println(dao.InsertRecordByTransactionIDAndProductId(b));
-            List<Record> list=dao.GetRecordByTransactionID("1");
-            for(Record r:list){
+            List<RecordDBModel> list=dao.GetRecordByTransactionID("1");
+            for(RecordDBModel r:list){
                 System.out.println("GetRecordByTransactionID "+r.getProduct_id());
             }
             
-            List<Record> list2=dao.GetRecordByProductID("1");
-            for(Record r:list2){
+            List<RecordDBModel> list2=dao.GetRecordByProductID("1");
+            for(RecordDBModel r:list2){
                 System.out.println("GetRecordByProductID "+r.getProduct_id());
             }
             

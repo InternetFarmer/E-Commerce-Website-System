@@ -7,7 +7,7 @@ package edu.pitt.sis.infsci2730.finalProject.model;
 
 import java.io.Serializable;
 
-public class Address implements Serializable {
+public class AddressDBModel implements Serializable {
 
     private int address_id;
     private String city;

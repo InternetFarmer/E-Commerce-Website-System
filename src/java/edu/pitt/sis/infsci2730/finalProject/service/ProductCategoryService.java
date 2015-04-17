@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.model.ProductCategory;
+import edu.pitt.sis.infsci2730.finalProject.model.ProductCategoryDBModel;
 import edu.pitt.sis.infsci2730.finalProject.dao.ProductCategoryDao;
 import java.util.List;
 
@@ -15,11 +15,11 @@ import java.util.List;
  */
 public class ProductCategoryService {
 
-    public ProductCategory getProductCategoryById(final String id) {
+    public ProductCategoryDBModel getProductCategoryById(final String id) {
         return ProductCategoryDao.getProductCategoryById(id);
     }
 
-    public List<ProductCategory> getProductCategory() {
+    public List<ProductCategoryDBModel> getProductCategory() {
         return ProductCategoryDao.getProductCategory();
     }
 

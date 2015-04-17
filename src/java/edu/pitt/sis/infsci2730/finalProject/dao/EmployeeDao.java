@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Employee;
+import edu.pitt.sis.infsci2730.finalProject.model.EmployeeDBModel;
 import edu.pitt.sis.infsci2730.finalProject.utils.EmployeeRowMapper;
 import java.sql.SQLException;
 import java.util.List;
@@ -30,7 +30,7 @@ public class EmployeeDao {
      * @param password
      * @return
      */
-    public static Employee checkEmployee(final String id, final String password) throws SQLException {
+    public static EmployeeDBModel checkEmployee(final String id, final String password) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Employee where employee_id = ? and password = ?",
                 new Object[]{id, password},
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR},
@@ -38,12 +38,12 @@ public class EmployeeDao {
     }
 
     /**
-     * get Employee only by employee_id
+     * get EmployeeDBModel only by employee_id
      *
      * @param id
-     * @return Employee
+     * @return EmployeeDBModel
      */
-    public static Employee getEmployeeById(final String id) throws SQLException {
+    public static EmployeeDBModel getEmployeeById(final String id) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Employee where employee_id = ?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
@@ -51,23 +51,23 @@ public class EmployeeDao {
     }
 
     /**
-     * get Employee only by employee_name
+     * get EmployeeDBModel only by employee_name
      *
      * @param name
      * @return List
      */
-    public static List<Employee> getEmployeeByEmployeeName(final String name) throws SQLException {
+    public static List<EmployeeDBModel> getEmployeeByEmployeeName(final String name) throws SQLException {
         return jdbcTemplate.query("select * from Employee where employee_name like '%" + name + "%'",
                 new EmployeeRowMapper());
     }
 
-    public static List<Employee> getAllEmployees() throws SQLException {
+    public static List<EmployeeDBModel> getAllEmployees() throws SQLException {
         return jdbcTemplate.query("select * from Employee",
                 new EmployeeRowMapper());
     }
 
     /**
-     * update Employee Name by a given id
+     * update EmployeeDBModel Name by a given id
      *
      * @param para
      * @return
@@ -80,10 +80,10 @@ public class EmployeeDao {
     }
 
     /**
-     * add new Employee
+     * add new EmployeeDBModel
      *
      * @param para
-     * @return Employee
+     * @return EmployeeDBModel
      */
     public static int addEmployee(final String[] para) throws SQLException {
         return jdbcTemplate.update("insert into Employee (password,employee_name,address_id,"
@@ -93,7 +93,7 @@ public class EmployeeDao {
     }
 
     /**
-     * delete Employee by given Id
+     * delete EmployeeDBModel by given Id
      *
      * @param id
      * @return int

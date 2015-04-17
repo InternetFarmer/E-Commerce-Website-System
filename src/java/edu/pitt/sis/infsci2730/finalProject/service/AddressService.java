@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Address;
+import edu.pitt.sis.infsci2730.finalProject.model.AddressDBModel;
 import edu.pitt.sis.infsci2730.finalProject.dao.AddressDao;
 
 /**
@@ -14,7 +14,7 @@ import edu.pitt.sis.infsci2730.finalProject.dao.AddressDao;
  */
 public class AddressService {
 
-    public Address getAddressById(final String id) {
+    public AddressDBModel getAddressById(final String id) {
         return AddressDao.getAddressById(id);
     }
 

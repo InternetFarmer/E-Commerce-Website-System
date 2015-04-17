@@ -6,7 +6,7 @@
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
 import edu.pitt.sis.infsci2730.finalProject.utils.ProductCategoryRowMapper;
-import edu.pitt.sis.infsci2730.finalProject.model.ProductCategory;
+import edu.pitt.sis.infsci2730.finalProject.model.ProductCategoryDBModel;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,9 +29,9 @@ public class ProductCategoryDao {
      * @param id
      * @return Product Category
      */
-    public static ProductCategory getProductCategoryById(final String id) throws SQLException {
+    public static ProductCategoryDBModel getProductCategoryById(final String id) throws SQLException {
         String sql = "select * from Product_Category where category_id = ?";
-        List<ProductCategory> list = jdbcTemplate.query(sql,
+        List<ProductCategoryDBModel> list = jdbcTemplate.query(sql,
                 new Object[]{id},
                 new int[]{java.sql.Types.VARCHAR},
                 new ProductCategoryRowMapper());
@@ -42,9 +42,9 @@ public class ProductCategoryDao {
         }
     }
 
-    public static List<ProductCategory> getProductCategory() throws SQLException {
+    public static List<ProductCategoryDBModel> getProductCategory() throws SQLException {
         String sql = "select * from Product_Category";
-        List<ProductCategory> list = jdbcTemplate.query(sql, new ProductCategoryRowMapper());
+        List<ProductCategoryDBModel> list = jdbcTemplate.query(sql, new ProductCategoryRowMapper());
         if (list != null) {
             return list;
         } else {
@@ -69,7 +69,7 @@ public class ProductCategoryDao {
      * add new Product_Category
      *
      * @param para
-     * @return ProductCategory
+     * @return ProductCategoryDBModel
      */
     public static int addProductCategory(final String[] para) throws SQLException {
         String sql = "insert into Product_Category (category_name) values (?)";

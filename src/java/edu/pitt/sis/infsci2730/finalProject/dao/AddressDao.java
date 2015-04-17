@@ -6,7 +6,7 @@
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
 import edu.pitt.sis.infsci2730.finalProject.utils.AddressRowMapper;
-import edu.pitt.sis.infsci2730.finalProject.model.Address;
+import edu.pitt.sis.infsci2730.finalProject.model.AddressDBModel;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,9 +23,9 @@ public class AddressDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public static Address getAddressById(final String id) throws SQLException {
+    public static AddressDBModel getAddressById(final String id) throws SQLException {
         String sql = "select * from Address where address_id = ?";
-        List<Address> list = jdbcTemplate.query(sql,
+        List<AddressDBModel> list = jdbcTemplate.query(sql,
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
                 new AddressRowMapper());
@@ -37,7 +37,7 @@ public class AddressDao {
     }
 
     /**
-     * update Address by a given id
+     * update AddressDBModel by a given id
      *
      * @param para
      * @return
@@ -50,7 +50,7 @@ public class AddressDao {
     }
 
     /**
-     * add new Address
+     * add new AddressDBModel
      *
      * @param para
      * @return
@@ -63,7 +63,7 @@ public class AddressDao {
     }
 
     /**
-     * delete Address by given Id
+     * delete AddressDBModel by given Id
      *
      * @param id
      * @return

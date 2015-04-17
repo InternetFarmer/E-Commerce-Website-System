@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Record;
+import edu.pitt.sis.infsci2730.finalProject.model.RecordDBModel;
 import edu.pitt.sis.infsci2730.finalProject.utils.RecordRowMapper;
 import java.sql.SQLException;
 import java.util.List;
@@ -24,7 +24,7 @@ public class RecordDao {
     }
 
     //search record by transaction_id
-    public static List<Record> GetRecordByTransactionID(final String id) throws SQLException {
+    public static List<RecordDBModel> GetRecordByTransactionID(final String id) throws SQLException {
         String sql = "select * from Record where transaction_id=?";
         return jdbcTemplate.query(sql,
                 new Object[]{id},
@@ -33,7 +33,7 @@ public class RecordDao {
     }
 
     //search record by product_id
-    public static List<Record> GetRecordByProductID(final String id) throws SQLException {
+    public static List<RecordDBModel> GetRecordByProductID(final String id) throws SQLException {
         String sql = "select * from Record where product_id=?";
         return jdbcTemplate.query(sql,
                 new Object[]{id},

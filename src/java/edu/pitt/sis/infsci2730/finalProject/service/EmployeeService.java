@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Employee;
+import edu.pitt.sis.infsci2730.finalProject.model.EmployeeDBModel;
 import edu.pitt.sis.infsci2730.finalProject.dao.EmployeeDao;
 import java.util.List;
 
@@ -15,19 +15,19 @@ import java.util.List;
  */
 public class EmployeeService {
     
-    public Employee checkEmployee(final String id, final String password) {
+    public EmployeeDBModel checkEmployee(final String id, final String password) {
         return EmployeeDao.checkEmployee(id, password);
     }
     
-    public Employee getEmployeeById(final String id) {
+    public EmployeeDBModel getEmployeeById(final String id) {
         return EmployeeDao.getEmployeeById(id);
     }
     
-    public List<Employee> getEmployeeByEmployeeName(final String name) {
+    public List<EmployeeDBModel> getEmployeeByEmployeeName(final String name) {
         return EmployeeDao.getEmployeeByEmployeeName(name);
     }
     
-    public List<Employee> getAllEmployees() {
+    public List<EmployeeDBModel> getAllEmployees() {
         return EmployeeDao.getAllEmployees();
     }
     

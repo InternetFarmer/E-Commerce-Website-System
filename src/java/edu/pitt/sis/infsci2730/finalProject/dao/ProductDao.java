@@ -5,8 +5,8 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Product;
-import edu.pitt.sis.infsci2730.finalProject.model.ProductCategory;
+import edu.pitt.sis.infsci2730.finalProject.model.ProductDBModel;
+import edu.pitt.sis.infsci2730.finalProject.model.ProductCategoryDBModel;
 import edu.pitt.sis.infsci2730.finalProject.utils.ProductCategoryRowMapper;
 import edu.pitt.sis.infsci2730.finalProject.utils.ProductRowMapper;
 import java.sql.SQLException;
@@ -26,7 +26,7 @@ public class ProductDao {
     }
 
     //search products by id
-    public static Product GetProductByID(final String id) throws SQLException {
+    public static ProductDBModel GetProductByID(final String id) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Product where product_id=?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
@@ -34,7 +34,7 @@ public class ProductDao {
     }
 
     public static String GetProductCategoryNameById(final String id) throws SQLException {
-        ProductCategory pc = new ProductCategory();
+        ProductCategoryDBModel pc = new ProductCategoryDBModel();
         pc = jdbcTemplate.queryForObject("select * from Product,Product_Category "
                 + "where Product.category_id = Product_Category.category_id "
                 + "and Product.product_id = ?",
@@ -44,19 +44,19 @@ public class ProductDao {
         return pc.getCategory_name();
     }
 
-    public static List<Product> GetAllProduct() throws SQLException {
+    public static List<ProductDBModel> GetAllProduct() throws SQLException {
         return jdbcTemplate.query("select * from Product",
                 new ProductRowMapper());
     }
 
     //search products by name
-    public static List<Product> GetProductByName(final String name) throws SQLException {
+    public static List<ProductDBModel> GetProductByName(final String name) throws SQLException {
         return jdbcTemplate.query("select * from Product where product_name like '%" + name + "%'",
                 new ProductRowMapper());
     }
 
     //search products by catagory_id
-    public static List<Product> GetProductByCategory(final String id) throws SQLException {
+    public static List<ProductDBModel> GetProductByCategory(final String id) throws SQLException {
         return jdbcTemplate.query("select * from Product where category_id=?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
@@ -64,7 +64,7 @@ public class ProductDao {
     }
 
     //search products by price
-    public static List<Product> GetProductByPrice(final String[] array) throws SQLException {
+    public static List<ProductDBModel> GetProductByPrice(final String[] array) throws SQLException {
         return jdbcTemplate.query("select * from Product where price>=? and price<=?",
                 array,
                 new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR},
@@ -72,7 +72,7 @@ public class ProductDao {
     }
 
     //search product with multiply parameters (category,name,price)
-    public static List<Product> GetProduct(final String[] array) throws SQLException {
+    public static List<ProductDBModel> GetProduct(final String[] array) throws SQLException {
         return jdbcTemplate.query("select * from Product where category_id =? and product_name like '%" + array[1] + "%' and price>=? and price<=?",
                 new Object[]{array[0], array[2], array[3]},
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR},

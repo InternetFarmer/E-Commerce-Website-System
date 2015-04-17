@@ -6,7 +6,7 @@
 package edu.pitt.sis.infsci2730.finalProject.model;
 
 
-public class Employee {
+public class EmployeeDBModel {
     
     private int employee_id;
     private String employee_name;
@@ -15,7 +15,7 @@ public class Employee {
     private int priviledge;
     private int store_id;
     private String salary;
-    private Address address;
+    private AddressDBModel address;
     
     public int getEmployee_id() {
         return employee_id;
@@ -73,11 +73,11 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Address getAddress() {
+    public AddressDBModel getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressDBModel address) {
         this.address = address;
     }
 }

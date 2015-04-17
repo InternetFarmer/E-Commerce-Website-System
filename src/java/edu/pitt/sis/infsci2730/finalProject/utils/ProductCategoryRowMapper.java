@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.utils;
 
-import edu.pitt.sis.infsci2730.finalProject.model.ProductCategory;
+import edu.pitt.sis.infsci2730.finalProject.model.ProductCategoryDBModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,10 +14,10 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author yanyanzhou
  */
-public class ProductCategoryRowMapper implements RowMapper<ProductCategory> {
+public class ProductCategoryRowMapper implements RowMapper<ProductCategoryDBModel> {
     
-    public ProductCategory mapRow(ResultSet rs, int index) throws SQLException {
-        ProductCategory productCategory = new ProductCategory();
+    public ProductCategoryDBModel mapRow(ResultSet rs, int index) throws SQLException {
+        ProductCategoryDBModel productCategory = new ProductCategoryDBModel();
         
         productCategory.setCategory_id(rs.getInt("CATEGORY_ID"));
         productCategory.setCategory_name(rs.getString("CATEGORY_NAME"));

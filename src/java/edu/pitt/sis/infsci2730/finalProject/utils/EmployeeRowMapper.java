@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.utils;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Employee;
+import edu.pitt.sis.infsci2730.finalProject.model.EmployeeDBModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,10 +14,10 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author yanyanzhou
  */
-public class EmployeeRowMapper implements RowMapper<Employee> {
+public class EmployeeRowMapper implements RowMapper<EmployeeDBModel> {
 
-    public Employee mapRow(ResultSet rs, int index) throws SQLException {
-        Employee employee = new Employee();
+    public EmployeeDBModel mapRow(ResultSet rs, int index) throws SQLException {
+        EmployeeDBModel employee = new EmployeeDBModel();
 
         employee.setEmployee_id(rs.getInt("employee_id"));
         employee.setEmployee_name(rs.getString("employee_name"));

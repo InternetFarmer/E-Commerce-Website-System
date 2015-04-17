@@ -10,7 +10,7 @@ package edu.pitt.sis.infsci2730.finalProject.model;
  *
  * @author Wu
  */
-public class Store {
+public class StoreDBModel {
     
     private int store_id;
     private int address_id;

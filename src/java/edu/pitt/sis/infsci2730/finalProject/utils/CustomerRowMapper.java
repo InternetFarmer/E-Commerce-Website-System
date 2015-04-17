@@ -6,7 +6,7 @@
 package edu.pitt.sis.infsci2730.finalProject.utils;
 
 
-import edu.pitt.sis.infsci2730.finalProject.model.Customer;
+import edu.pitt.sis.infsci2730.finalProject.model.CustomerDBModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
@@ -15,9 +15,9 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author yanyanzhou
  */
-public class CustomerRowMapper implements RowMapper<Customer> {
-        public Customer mapRow(ResultSet rs, int index) throws SQLException {
-        Customer customer = new Customer();
+public class CustomerRowMapper implements RowMapper<CustomerDBModel> {
+        public CustomerDBModel mapRow(ResultSet rs, int index) throws SQLException {
+        CustomerDBModel customer = new CustomerDBModel();
         
         customer.setCustomer_id(rs.getInt("CUSTOMER_ID"));
         customer.setAddress_id(rs.getInt("ADDRESS_ID"));

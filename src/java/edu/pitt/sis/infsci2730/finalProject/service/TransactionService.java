@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.service;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Transaction;
+import edu.pitt.sis.infsci2730.finalProject.model.TransactionDBModel;
 import edu.pitt.sis.infsci2730.finalProject.dao.TransactionDao;
 import edu.pitt.sis.infsci2730.finalProject.utils.TransactionRowMapper;
 import java.util.List;
@@ -18,12 +18,12 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 public class TransactionService {
 
     //search transactions and records by transaction_id
-    public Transaction GetTransactionByID(final String id) {
+    public TransactionDBModel GetTransactionByID(final String id) {
         return TransactionDao.GetTransactionByID(id);
     }
 
     //search transactions by customer_id
-    public List<Transaction> GetTransactionByCustomerID(final String id) {
+    public List<TransactionDBModel> GetTransactionByCustomerID(final String id) {
         return TransactionDao.GetTransactionByCustomerID(id);
     }
 
@@ -32,7 +32,7 @@ public class TransactionService {
         return TransactionDao.GetTransaction(id);
     }
     
-    public List<Transaction> GetAllTransaction() {
+    public List<TransactionDBModel> GetAllTransaction() {
         return TransactionDao.GetAllTransaction();
     }
     

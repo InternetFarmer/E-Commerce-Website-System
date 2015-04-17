@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Transaction;
+import edu.pitt.sis.infsci2730.finalProject.model.TransactionDBModel;
 import edu.pitt.sis.infsci2730.finalProject.utils.TransactionRowMapper;
 import java.sql.SQLException;
 import java.util.List;
@@ -25,7 +25,7 @@ public class TransactionDao {
     }
 
     //search transactions and records by transaction_id
-    public static Transaction GetTransactionByID(final String id) throws SQLException {
+    public static TransactionDBModel GetTransactionByID(final String id) throws SQLException {
         String sql = "SELECT * FROM Transactions where transaction_id=?";
         return jdbcTemplate.queryForObject(sql,
                 new Object[]{id},
@@ -34,7 +34,7 @@ public class TransactionDao {
     }
 
     //search transactions by customer_id
-    public static List<Transaction> GetTransactionByCustomerID(final String id) throws SQLException {
+    public static List<TransactionDBModel> GetTransactionByCustomerID(final String id) throws SQLException {
         String sql = "select * from Transactions t where t.customer_id=?";
         return jdbcTemplate.query(sql,
                 new Object[]{id},
@@ -54,7 +54,7 @@ public class TransactionDao {
                 new int[]{java.sql.Types.INTEGER});
     }
 
-    public static List<Transaction> GetAllTransaction() throws SQLException {
+    public static List<TransactionDBModel> GetAllTransaction() throws SQLException {
         String sql = "select * from Transactions";
         return jdbcTemplate.query(sql, new TransactionRowMapper());
     }

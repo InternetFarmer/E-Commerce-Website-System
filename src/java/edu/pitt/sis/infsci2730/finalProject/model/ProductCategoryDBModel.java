@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Wu
  */
 
-public class ProductCategory implements Serializable {
+public class ProductCategoryDBModel implements Serializable {
     
     private int category_id;
     private String category_name;

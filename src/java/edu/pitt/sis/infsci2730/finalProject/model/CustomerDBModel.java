@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.model;
 
-public class Customer {
+public class CustomerDBModel {
 
     private int customer_id;
     private int address_id;
@@ -17,7 +17,7 @@ public class Customer {
     private String gender;
     private String age;
     private String income;
-    private Address address;
+    private AddressDBModel address;
 
     public int getCustomer_id() {
         return customer_id;
@@ -99,11 +99,11 @@ public class Customer {
         this.income = income;
     }
 
-    public Address getAddress() {
+    public AddressDBModel getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressDBModel address) {
         this.address = address;
     }
 }

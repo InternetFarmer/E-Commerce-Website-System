@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Customer;
+import edu.pitt.sis.infsci2730.finalProject.model.CustomerDBModel;
 import edu.pitt.sis.infsci2730.finalProject.utils.CustomerRowMapper;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,28 +23,28 @@ public class CustomerDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public static Customer login(final String[] para) throws SQLException {
+    public static CustomerDBModel login(final String[] para) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Customer where customer_id = ? and password = ?",
                 para,
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR},
                 new CustomerRowMapper());
     }
 
-    public static Customer getCustomerById(final String id) throws SQLException {
+    public static CustomerDBModel getCustomerById(final String id) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Customer where customer_id = ?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER},
                 new CustomerRowMapper());
     }
 
-    public static Customer getCustomerByCustomerName(final String name) throws SQLException {
+    public static CustomerDBModel getCustomerByCustomerName(final String name) throws SQLException {
         return jdbcTemplate.queryForObject("select * from Customer where customer_name = ?",
                 new Object[]{name},
                 new int[]{java.sql.Types.VARCHAR},
                 new CustomerRowMapper());
     }
 
-    public static List<Customer> getAllCustomers() throws SQLException {
+    public static List<CustomerDBModel> getAllCustomers() throws SQLException {
         return jdbcTemplate.query("select * from Customer",
                 new CustomerRowMapper());
     }
@@ -63,7 +63,7 @@ public class CustomerDao {
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.CHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR});
     }
 
-    public static List<Customer> SearchCustomer(final String name) throws SQLException {
+    public static List<CustomerDBModel> SearchCustomer(final String name) throws SQLException {
         return jdbcTemplate.query("select * from Customer where customer_name like '%" + name + "%'",
                 new CustomerRowMapper());
 

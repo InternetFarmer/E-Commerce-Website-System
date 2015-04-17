@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.utils;
 
-import edu.pitt.sis.infsci2730.finalProject.model.Address;
+import edu.pitt.sis.infsci2730.finalProject.model.AddressDBModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,9 +14,9 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author yanyanzhou
  */
-public class AddressRowMapper implements RowMapper<Address> {
-        public Address mapRow(ResultSet rs, int index) throws SQLException {
-        Address address = new Address();
+public class AddressRowMapper implements RowMapper<AddressDBModel> {
+        public AddressDBModel mapRow(ResultSet rs, int index) throws SQLException {
+        AddressDBModel address = new AddressDBModel();
         
         address.setAddress_id(rs.getInt("address_id"));
         address.setCity(rs.getString("city"));
