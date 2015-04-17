@@ -7,9 +7,15 @@ package edu.pitt.sis.infsci2730.finalProject.dao;
 
 import edu.pitt.sis.infsci2730.finalProject.utils.AddressRowMapper;
 import edu.pitt.sis.infsci2730.finalProject.model.AddressDBModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 /**
  *
@@ -55,11 +61,38 @@ public class AddressDao {
      * @param para
      * @return
      */
-    public static int addAddress(final String[] para) throws SQLException {
+    public static AddressDBModel addAddress(final String[] para) throws SQLException {
         String sql = "insert into Address (city,street,state_,zipCode) values (?,?,?,?)";
-        return jdbcTemplate.update(sql,
-                para,
-                new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR});
+//        return jdbcTemplate.update(sql,
+//                para,
+//                new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR});
+        return jdbcTemplate.queryForObject(sql, para,
+                new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR},
+                new AddressRowMapper());
+    }
+
+    public static Long addAddresss(final String[] para) throws SQLException {
+
+        KeyHolder holder = new GeneratedKeyHolder();
+        jdbcTemplate.update(new PreparedStatementCreator() {
+
+            String sql = "insert into Address (city,street,state_,zipCode) values (?,?,?,?)";
+
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection)
+                    throws SQLException {
+                PreparedStatement ps = connection.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, para[0]);
+                ps.setString(2, para[1]);
+                ps.setString(3, para[2]);
+                ps.setString(4, para[3]);
+                return ps;
+            }
+        }, holder);
+
+        Long newPersonId = holder.getKey().longValue();
+
+        return newPersonId;
     }
 
     /**
