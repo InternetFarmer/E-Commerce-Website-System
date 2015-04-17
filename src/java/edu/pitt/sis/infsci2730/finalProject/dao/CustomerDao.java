@@ -7,6 +7,7 @@ package edu.pitt.sis.infsci2730.finalProject.dao;
 
 import edu.pitt.sis.infsci2730.finalProject.model.Customer;
 import edu.pitt.sis.infsci2730.finalProject.utils.CustomerRowMapper;
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -48,7 +49,7 @@ public class CustomerDao {
                 new CustomerRowMapper());
     }
 
-    public static int updateCustomerNameById(final String[] para) {
+    public static int updateCustomerNameById(final String[] para) throws SQLException {
         int ret = jdbcTemplate.update("update Customer set customer_name = ? where customer_id = ?",
                 para,
                 new int[]{java.sql.Types.VARCHAR, java.sql.Types.INTEGER});
@@ -56,7 +57,7 @@ public class CustomerDao {
     }
 
     //bug
-    public static int addCustomer(final String[] para) {
+    public static int addCustomer(final String[] para) throws SQLException {
         return jdbcTemplate.update("insert into Customer (address_id, customer_name,password, gender,age,income) values (?,?,'12345',?,?,?)",
                 para,
                 new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.CHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR});
@@ -68,7 +69,7 @@ public class CustomerDao {
 
     }
 
-    public static int deleteCustomerById(final String id) {
+    public static int deleteCustomerById(final String id) throws SQLException {
         int ret = jdbcTemplate.update("delete from Customer where customer_id = ?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER});

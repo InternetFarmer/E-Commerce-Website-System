@@ -7,6 +7,7 @@ package edu.pitt.sis.infsci2730.finalProject.dao;
 
 import edu.pitt.sis.infsci2730.finalProject.utils.AddressRowMapper;
 import edu.pitt.sis.infsci2730.finalProject.model.Address;
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -41,7 +42,7 @@ public class AddressDao {
      * @param para
      * @return
      */
-    public static int updateAddressById(final String[] para) {
+    public static int updateAddressById(final String[] para) throws SQLException {
         String sql = "update Address set state_ = ?, city = ?,street = ?, zipCode = ? where "
                 + "address_id = ?";
         return jdbcTemplate.update(sql, para,
@@ -54,9 +55,9 @@ public class AddressDao {
      * @param para
      * @return
      */
-    public static int addAddress(final String[] para) {
+    public static int addAddress(final String[] para) throws SQLException {
         String sql = "insert into Address (city,street,state_,zipCode) values (?,?,?,?)";
-        return jdbcTemplate.update(sql, 
+        return jdbcTemplate.update(sql,
                 para,
                 new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR});
     }
@@ -67,10 +68,10 @@ public class AddressDao {
      * @param id
      * @return
      */
-    public static int deleteAddressById(final String id) {
+    public static int deleteAddressById(final String id) throws SQLException {
         String sql = "delete from Address where address_id = ?";
-        return jdbcTemplate.update(sql, 
-                new Object[] {id}, 
-                new int[] {java.sql.Types.INTEGER});
+        return jdbcTemplate.update(sql,
+                new Object[]{id},
+                new int[]{java.sql.Types.INTEGER});
     }
 }

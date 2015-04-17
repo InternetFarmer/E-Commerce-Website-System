@@ -7,6 +7,7 @@ package edu.pitt.sis.infsci2730.finalProject.service;
 
 import edu.pitt.sis.infsci2730.finalProject.model.Customer;
 import edu.pitt.sis.infsci2730.finalProject.dao.CustomerDao;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class CustomerService {
 
-    public Customer login(final String[] para) {
+    public Customer login(final String[] para) throws SQLException {
         return CustomerDao.login(para);
     }
 

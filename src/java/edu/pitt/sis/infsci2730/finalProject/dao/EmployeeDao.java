@@ -7,6 +7,7 @@ package edu.pitt.sis.infsci2730.finalProject.dao;
 
 import edu.pitt.sis.infsci2730.finalProject.model.Employee;
 import edu.pitt.sis.infsci2730.finalProject.utils.EmployeeRowMapper;
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -71,7 +72,7 @@ public class EmployeeDao {
      * @param para
      * @return
      */
-    public static int updateEmployeeNameById(final String[] para) {
+    public static int updateEmployeeNameById(final String[] para) throws SQLException {
         int ret = jdbcTemplate.update("update Employee set employee_name = ? where employee_id = ?",
                 para,
                 new int[]{java.sql.Types.VARCHAR, java.sql.Types.INTEGER});
@@ -79,12 +80,12 @@ public class EmployeeDao {
     }
 
     /**
-     * add new Employee 
+     * add new Employee
      *
      * @param para
      * @return Employee
      */
-    public static int addEmployee(final String[] para) {
+    public static int addEmployee(final String[] para) throws SQLException {
         return jdbcTemplate.update("insert into Employee (password,employee_name,address_id,"
                 + "jobtitle,store_id,salary) values ('123456',?,?,?,?,?)",
                 para,
@@ -97,7 +98,7 @@ public class EmployeeDao {
      * @param id
      * @return int
      */
-    public static int deleteEmployeeById(final String id) {
+    public static int deleteEmployeeById(final String id) throws SQLException {
         int ret = jdbcTemplate.update("delete from Employee where employee_id = ?",
                 new Object[]{id},
                 new int[]{java.sql.Types.INTEGER});
