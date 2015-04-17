@@ -5,10 +5,15 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.web;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
 /**
  *
  * @author Wu
  */
+@Controller
+@RequestMapping("/login")
 public class LoginController {
     
 }

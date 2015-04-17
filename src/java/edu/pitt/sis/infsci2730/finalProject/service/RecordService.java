@@ -7,7 +7,6 @@ package edu.pitt.sis.infsci2730.finalProject.service;
 
 import edu.pitt.sis.infsci2730.finalProject.model.Record;
 import edu.pitt.sis.infsci2730.finalProject.dao.RecordDao;
-import edu.pitt.sis.infsci2730.finalProject.utils.RecordRowMapper;
 import java.util.List;
 
 /**
