@@ -55,7 +55,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-4">
-                                    <button class="btn btn-primary btn-block" type="button" onclick="login()">Log In</button>
+                                    <button class="btn btn-primary btn-block" type="button" id="loginButton">Log In</button>
                                 </div>
                                 <div class="col-sm-4">
                                     <button class="btn btn-primary btn-block" type="button">Browse</button>
@@ -69,5 +69,6 @@
         </div>
     </body>
     <%@ include file="footer.jsp" %>
+    <script src="<c:url value='/resources/js/login.js'/>"></script>
 </html>
 
