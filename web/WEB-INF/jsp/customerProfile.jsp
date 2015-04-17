@@ -180,36 +180,6 @@
                                             <input type="text" id="update_zipcode" class="form-control" value="<%=currentAddress.getZipCode()%>">
                                         </div>
                                     </div>
-                                    <%
-                                        if (customer.getType().endsWith("1")) {
-                                    %>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label">Customer Type</label>
-                                        <div class="col-sm-6">
-                                            <input id="customer_type" type="text" name="userType" value="Business" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label">Business Category</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" id="update_business_category" class="form-control" value="<%=customer.getBusiness_category()%>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label">Company Gross Income</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" id="update_company_gross_income" class="form-control" value="<%=customer.getCompany_gross_income()%>">
-                                        </div>
-                                    </div>
-                                    <%
-                                    } else {
-                                    %>
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label">Marriage Status</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" id="update_marriage_status" class="form-control" value="<%=customer.getMarriage_status()%>">
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label">Gender</label>
                                         <div class="col-sm-6">
@@ -228,7 +198,6 @@
                                             <input type="text" id="update_income" class="form-control" value="<%=customer.getIncome()%>">
                                         </div>
                                     </div>
-                                    <%}%>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -243,5 +212,8 @@
             </div>
         </div>
     </body>
+    
+    <%@ include file="footer.jsp" %>
+    <script src="<c:url value='/resources/js/login.js'/>"></script>
 </html>
 
