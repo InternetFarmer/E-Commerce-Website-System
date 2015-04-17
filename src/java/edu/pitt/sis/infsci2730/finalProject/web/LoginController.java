@@ -56,7 +56,7 @@ public class LoginController {
             return new ResponseEntity<String>("0", responseHeaders, HttpStatus.CREATED);
         }
     }
-    
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<String> register(HttpEntity<byte[]> requestEntity) throws UnsupportedEncodingException {
         byte[] requestBody = requestEntity.getBody();
@@ -64,6 +64,5 @@ public class LoginController {
         Gson gson = new Gson();
         Customer c = gson.fromJson(str, Customer.class);
 
-        
     }
-    }
+}
