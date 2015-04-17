@@ -23,7 +23,7 @@ public class AddressService {
         return AddressDao.updateAddressById(para);
     }
 
-    public int addAddress(final String[] para) throws SQLException {
+    public long addAddress(final String[] para) throws SQLException {
         return AddressDao.addAddress(para);
     }
 

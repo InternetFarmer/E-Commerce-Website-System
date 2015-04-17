@@ -68,7 +68,7 @@ public class AddressDao {
 //                new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR});
 //    }
 
-    public static Long addAddresss(final String[] para) throws SQLException {
+    public static Long addAddress(final String[] para) throws SQLException {
 
         KeyHolder holder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {

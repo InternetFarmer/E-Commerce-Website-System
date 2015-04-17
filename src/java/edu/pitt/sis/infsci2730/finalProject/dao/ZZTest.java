@@ -25,7 +25,7 @@ public class ZZTest {
             String[] a={"Pittsburgh","Fifth","PA","15213"};
 //            String[] b={"2","2","3","15"};
             
-            System.out.println(dao.addAddresss(a));
+            System.out.println(dao.addAddress(a));
 //            System.out.println(dao.InsertRecordByTransactionIDAndProductId(b));
             
             
