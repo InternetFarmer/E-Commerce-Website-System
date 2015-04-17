@@ -34,7 +34,7 @@ public class ProductsController {
 
         try {
             Map<String, Object> myModel = new HashMap<String, Object>();
-            myModel.put("products", this.productService.GetAllProduct());
+            myModel.put("productList", this.productService.GetAllProduct());
             
             return new ModelAndView("products", "model", myModel);
         } catch (SQLException ex) {
