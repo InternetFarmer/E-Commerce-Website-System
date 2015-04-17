@@ -5,7 +5,7 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.dao;
 
-import edu.pitt.sis.infsci2730.finalProject.model.RecordDBModel;
+import edu.pitt.sis.infsci2730.finalProject.model.AddressDBModel;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -20,21 +20,24 @@ public class ZZTest {
     public static void main(String[] args) throws Exception {
         try {
             ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-            RecordDao dao = (RecordDao) ac.getBean("recordDao");
+            AddressDao dao = (AddressDao) ac.getBean("addressDao");
 
-//            String[] a={"2","1","5","20"};
+            String[] a={"Pittsburgh","Fifth","PA","15213"};
 //            String[] b={"2","2","3","15"};
-//            System.out.println(dao.InsertRecordByTransactionIDAndProductId(a));
-//            System.out.println(dao.InsertRecordByTransactionIDAndProductId(b));
-            List<RecordDBModel> list=dao.GetRecordByTransactionID("1");
-            for(RecordDBModel r:list){
-                System.out.println("GetRecordByTransactionID "+r.getProduct_id());
-            }
             
-            List<RecordDBModel> list2=dao.GetRecordByProductID("1");
-            for(RecordDBModel r:list2){
-                System.out.println("GetRecordByProductID "+r.getProduct_id());
-            }
+            System.out.println(dao.addAddresss(a));
+//            System.out.println(dao.InsertRecordByTransactionIDAndProductId(b));
+            
+            
+//            List<RecordDBModel> list=dao.GetRecordByTransactionID("1");
+//            for(RecordDBModel r:list){
+//                System.out.println("GetRecordByTransactionID "+r.getProduct_id());
+//            }
+//            
+//            List<RecordDBModel> list2=dao.GetRecordByProductID("1");
+//            for(RecordDBModel r:list2){
+//                System.out.println("GetRecordByProductID "+r.getProduct_id());
+//            }
             
 
 //            System.out.println("GetTransaction");
