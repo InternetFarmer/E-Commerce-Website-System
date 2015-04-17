@@ -18,7 +18,7 @@ $(function() {
         console.log(JSON.stringify(user));
         $.ajax({
             type: "POST",
-            url: "login/checkUser.htm",
+            url: "user/login.htm",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(user),
@@ -32,7 +32,7 @@ $(function() {
                         alert("internal error");
                         break;
                     case 1:
-                        window.location.href = '/index.htm';
+                        window.location.href = 'products.htm';
                         break;
                     default:
                         alert("something is wrong! lol");

@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
  * @author Wu
  */
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/user")
 public class LoginController {
 
     @RequestMapping
@@ -36,7 +36,7 @@ public class LoginController {
         return "index";
     }
 
-    @RequestMapping(value = "/checkUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<String> login(HttpEntity<byte[]> requestEntity) throws UnsupportedEncodingException {
         byte[] requestBody = requestEntity.getBody();
         String str = new String(requestBody, "UTF-8");
