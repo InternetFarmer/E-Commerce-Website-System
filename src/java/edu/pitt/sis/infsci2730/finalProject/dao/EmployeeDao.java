@@ -87,9 +87,9 @@ public class EmployeeDao {
      */
     public static int addEmployee(final String[] para) throws SQLException {
         return jdbcTemplate.update("insert into Employee (password,employee_name,address_id,"
-                + "jobtitle,store_id,salary) values ('123456',?,?,?,?,?)",
+                + "jobtitle,store_id,salary) values (?,?,?,?,?,?)",
                 para,
-                new int[]{java.sql.Types.VARCHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR});
+                new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR});
     }
 
     /**

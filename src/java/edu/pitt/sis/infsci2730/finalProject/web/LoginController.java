@@ -50,7 +50,6 @@ public class LoginController {
         try {
             CustomerDBModel customerDBModel = customerService.login(para);
             if (customerDBModel == null) {
-                
                 return new ResponseEntity<String>("-1", responseHeaders, HttpStatus.CREATED);
             } else {
                 return new ResponseEntity<String>("1", responseHeaders, HttpStatus.CREATED);
@@ -59,6 +58,15 @@ public class LoginController {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<String>("0", responseHeaders, HttpStatus.CREATED);
         }
+    }
+    
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<String> register(HttpEntity<byte[]> requestEntity) throws UnsupportedEncodingException {
+        byte[] requestBody = requestEntity.getBody();
+        String str = new String(requestBody, "UTF-8");
+        Gson gson = new Gson();
+        Customer c = gson.fromJson(str, Customer.class);
 
+        
     }
 }
