@@ -5,10 +5,16 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.rest;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  *
  * @author Wu
  */
-public class UserRestAPI {
+
+@Controller
+@RequestMapping("/rest/order")
+public class OrderRestAPI {
     
 }

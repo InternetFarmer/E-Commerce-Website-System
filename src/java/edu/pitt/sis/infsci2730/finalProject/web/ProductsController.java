@@ -6,13 +6,11 @@
 package edu.pitt.sis.infsci2730.finalProject.web;
 
 import edu.pitt.sis.infsci2730.finalProject.service.ProductService;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
@@ -45,9 +43,5 @@ public class ProductsController {
 
     public void setProductManager(ProductService productService) {
         this.productService = productService;
-    }
-    
-    
-    
-    
+    }    
 }
