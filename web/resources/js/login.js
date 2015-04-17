@@ -13,19 +13,15 @@ $(function() {
         var user = {
             "customer_name": userNameInput.val(),
             "password": passwordInput.val()
-        }
+        };
 
         console.log(JSON.stringify(user));
         $.ajax({
             type: "POST",
-            url: "login/test.htm",
-            dataType: 'json',
-            data: JSON.stringify(user),
+            url: "login/checkUser.htm",
+            dataType: "json",
             contentType: "application/json",
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Accept", "application/json");
-                xhr.setRequestHeader("Content-Type", "application/json");
-            },
+            data: JSON.stringify(user),
             success: function(message) {
                 console.log(message);
                 switch (message) {

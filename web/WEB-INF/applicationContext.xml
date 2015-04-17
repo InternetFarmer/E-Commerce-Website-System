@@ -54,4 +54,5 @@
     <bean id="recordDao" class="edu.pitt.sis.infsci2730.finalProject.dao.RecordDao">  
         <property name="jdbcTemplate" ref="jdbcTemplate"/>  
     </bean> 
+    
 </beans>

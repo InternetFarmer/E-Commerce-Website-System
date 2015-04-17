@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.pitt.sis.infsci2730.fianlProject.viewModel;
+package edu.pitt.sis.infsci2730.finalProject.viewModel;
 
 import edu.pitt.sis.infsci2730.finalProject.model.*;
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Customer implements Serializable{
 
     private int customer_id;

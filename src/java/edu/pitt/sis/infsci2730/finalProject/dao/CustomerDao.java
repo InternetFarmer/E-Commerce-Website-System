@@ -24,9 +24,9 @@ public class CustomerDao {
     }
 
     public static CustomerDBModel login(final String[] para) throws SQLException {
-        return jdbcTemplate.queryForObject("select * from Customer where customer_id = ? and password = ?",
+        return jdbcTemplate.queryForObject("select * from Customer where customer_name = ? and password = ?",
                 para,
-                new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR},
+                new int[]{java.sql.Types.VARCHAR, java.sql.Types.VARCHAR},
                 new CustomerRowMapper());
     }
 
