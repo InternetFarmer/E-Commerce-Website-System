@@ -7,10 +7,16 @@ package edu.pitt.sis.infsci2730.finalProject.dao;
 
 import edu.pitt.sis.infsci2730.finalProject.model.TransactionDBModel;
 import edu.pitt.sis.infsci2730.finalProject.utils.TransactionRowMapper;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Connection;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 /**
  *
@@ -80,12 +86,28 @@ public class TransactionDao {
     }
 
     //insert new transaction by Transaction_id
-    public static int InsertTransactionByID(final String[] array) throws SQLException {
-        String sql = "insert into Transactions (transaction_date, customer_id) "
-                + "values (CURRENT_TIMESTAMP,?)";//not include transaction_id
-        return jdbcTemplate.update(sql,
-                array,
-                new int[]{java.sql.Types.INTEGER});
+    public static TransactionDBModel InsertTransactionByID(final String[] para) throws SQLException {
+
+        KeyHolder holder = new GeneratedKeyHolder();
+        jdbcTemplate.update(new PreparedStatementCreator() {
+
+            String sql = "insert into Transactions (transaction_date, customer_id) "
+                    + "values (CURRENT_TIMESTAMP,?)";
+
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection)
+                    throws SQLException {
+                PreparedStatement ps = connection.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, para[0]);
+
+                return ps;
+            }
+        }, holder);
+
+        int newId = holder.getKey().intValue();
+
+        return jdbcTemplate.queryForObject("select * from Transactions where TRANSACTION_ID=" + newId,
+                new TransactionRowMapper());
     }
 
     //delete transactions by id
