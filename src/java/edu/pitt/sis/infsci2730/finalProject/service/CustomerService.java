@@ -33,7 +33,7 @@ public class CustomerService {
     }
 
     public int updateCustomerNameById(final String[] para) throws SQLException {
-        return CustomerDao.updateCustomerNameById(para);
+        return CustomerDao.updateCustomerById(para);
     }
 
     //bug

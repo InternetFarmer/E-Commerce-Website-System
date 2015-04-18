@@ -49,8 +49,8 @@ public class CustomerDao {
                 new CustomerRowMapper());
     }
 
-    public static int updateCustomerNameById(final String[] para) throws SQLException {
-        int ret = jdbcTemplate.update("update Customer set customer_name = ? where customer_id = ?",
+    public static int updateCustomerById(final String[] para) throws SQLException {
+        int ret = jdbcTemplate.update("update Customer set address_id = ?, customer_name = ?, password = ?, gender = ?, age = ?, income = ? where customer_id = ?",
                 para,
                 new int[]{java.sql.Types.VARCHAR, java.sql.Types.INTEGER});
         return ret;

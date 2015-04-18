@@ -98,24 +98,6 @@ public class UserRestAPI {
 
     }
 
-    //更新信息
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    @ResponseBody
-    public Customer update(@RequestBody Customer c) throws UnsupportedEncodingException {
-        CustomerService customerService = new CustomerService();
-        String[] pata = {c.getCustomer_name(), c.getCustomer_id() + ""};
-        try {
-            int updateCustomer = customerService.updateCustomerNameById(pata);
-            if (updateCustomer == 0) {
-                return null;
-            } else {
-                return c;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
     
     // /rest/{userid} GET
     @RequestMapping(value = "/{userid}", method = RequestMethod.GET, produces = "application/json")
@@ -133,4 +115,49 @@ public class UserRestAPI {
             return null;
         }
     }
+    
+  //更新信息
+  @RequestMapping(value = "/update", method = RequestMethod.POST)
+  @ResponseBody
+  public CustomerDBModel update(@RequestBody CustomerDBModel c) throws UnsupportedEncodingException {
+    AddressDBModel address = c.getAddress();
+    AddressService addressService = new AddressService();
+    String[] para
+            = {address.getState_(),
+              address.getCity(),
+              address.getStreet(),
+              address.getZipCode(),
+              "'" + address.getAddress_id() + "'"};
+    try {
+      int updateAddress = addressService.updateAddressById(para);
+      if (updateAddress == 0) {
+        return null;
+      } else {
+        CustomerService customerService = new CustomerService();
+        String[] pata
+                = {"'" + address.getAddress_id() + "'",
+                  c.getCustomer_name(),
+                  c.getPassword(),
+                  c.getGender(),
+                  c.getAge(),
+                  c.getIncome(),
+                  "'" + c.getCustomer_id() + "'"};
+        try {
+          int updateCustomer = customerService.updateCustomerNameById(pata);
+          if (updateCustomer == 0) {
+            return null;
+          } else {
+            return c;
+          }
+        } catch (SQLException ex) {
+          Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+          return null;
+        }
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+      return null;
+    }
+
+  }
 }
