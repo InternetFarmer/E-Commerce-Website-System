@@ -50,9 +50,9 @@ public class CustomerDao {
     }
 
     public static int updateCustomerById(final String[] para) throws SQLException {
-        int ret = jdbcTemplate.update("update Customer set address_id = ?, customer_name = ?, password = ?, gender = ?, age = ?, income = ? where customer_id = ?",
+        int ret = jdbcTemplate.update("update Customer set gender = ?, age = ?, income = ? where customer_id = ?",
                 para,
-                new int[]{java.sql.Types.VARCHAR, java.sql.Types.INTEGER});
+                new int[]{java.sql.Types.VARCHAR,java.sql.Types.VARCHAR,java.sql.Types.VARCHAR, java.sql.Types.INTEGER});
         return ret;
     }
 

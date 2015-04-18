@@ -59,7 +59,7 @@
                                             <th>Details</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="history-table">
                                         <%
                                             List<TransactionDBModel> lt = (ArrayList) map.get("transactionList");
                                             if (lt != null) {
@@ -71,7 +71,7 @@
                                                     out.println("<td>Delieved</td>");
                                         %>
                                     <td>
-                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" onclick="showTransaction(<%=t.getTransaction_id()%>)">
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" data-id="<%=t.getTransaction_id()%>">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </button>
                                     </td></tr>
@@ -121,5 +121,5 @@
 
     </body>
     <%@ include file="footer.jsp" %>
-    <script src="<c:url value='/resources/js/login.js'/>"></script>
+    <script src="<c:url value='/resources/js/history.js'/>"></script>
 </html>

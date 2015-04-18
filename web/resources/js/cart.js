@@ -3,15 +3,28 @@ $(function() {
 
     $(".addbutton").on("click", function() {
         var product_id = $(this).attr("data-id");
-        var amount_box = $("amount_box_" + product_id);
+        var amount_box = $("#amount_box_" + product_id);
 
         var amount = amount_box.val();
         amount++;
         amount_box.attr("value", amount);
+        total_amount();
     });
 
     $('.minusbutton').on("click", function() {
+        var product_id = $(this).attr("data-id");
+        var amount_box = $("#amount_box_" + product_id);
 
+        var amount = amount_box.val();
+        if(amount > 1){
+            amount--;
+        }
+        amount_box.attr("value", amount);
+        total_amount();
+    });
+
+    $(".delcolumn button").on("click",function(){
+        removeProduct($(this).attr("data-id"));
     });
 });
 
@@ -25,7 +38,7 @@ function cart() {
                 "<input type='button' value='-' class='minusbutton' data-id='" + p.product_id + "'/>" +
                 "<input id='amount_box_" + p.product_id + "' type='text' value='1' size='1px'/>" +
                 "<input type='button' class='addbutton' value='+' data-id='" + p.product_id + "'/>" +
-                "</td><td><button type='button' class='deletebutton btn btn-primary btn-sm' onclick='removeProduct(" + p.product_id + ")'>" +
+                "</td><td class='delcolumn'><button type='button' class='deletebutton btn btn-primary btn-sm' data-id='" + p.product_id + "'>" +
                 "<span class='glyphicon glyphicon-remove'></span></button></td></tr>");
         }
     }
@@ -38,23 +51,23 @@ function removeProduct(id) {
         var p = bag[i];
         if (p.product_id == id) {
             bag.splice(i, 1);
-            var pr = $("#product_" + id);
-            pr.parentNode.removeChild(pr);
+            $("#product_" + id).remove();
         }
     }
     sessionStorage.setItem("bag", JSON.stringify(bag));
-    calculateTotalMoney();
+    total_amount();
 }
 
 function total_amount() {
     var cart = JSON.parse(sessionStorage.getItem("bag"));
+    var totalDisplay = $("#totle_money");
+    
     var total = 0;
     //alert(1);
     for (var i = 0; i < cart.length; i++) {
         var product = cart[i];
-        var amount = $("#amount_box_" + product.product_id).value;
+        var amount = $("#amount_box_" + product.product_id).val();
         total += product.price * amount;
     }
-    var totalDisplay = $("#totle_money");
-    totalDisplay.value = total;
+    totalDisplay.attr("value",total);
 }

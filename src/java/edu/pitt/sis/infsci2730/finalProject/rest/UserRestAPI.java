@@ -30,7 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/rest/users")
 public class UserRestAPI {
-
+    
+    private final AddressService addressService = new AddressService();
     //登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
@@ -98,7 +99,6 @@ public class UserRestAPI {
 
     }
 
-    
     // /rest/{userid} GET
     @RequestMapping(value = "/{userid}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
@@ -108,56 +108,57 @@ public class UserRestAPI {
         AddressService addressservice = new AddressService();
         try {
             CustomerDBModel c = customerservice.getCustomerById(userid);
-            c.setAddress(addressservice.getAddressById(c.getAddress_id()+""));
+            c.setAddress(addressservice.getAddressById(c.getAddress_id() + ""));
             return c;
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
-    
-  //更新信息
-  @RequestMapping(value = "/update", method = RequestMethod.POST)
-  @ResponseBody
-  public CustomerDBModel update(@RequestBody CustomerDBModel c) throws UnsupportedEncodingException {
-    AddressDBModel address = c.getAddress();
-    AddressService addressService = new AddressService();
-    String[] para
-            = {address.getState_(),
-              address.getCity(),
-              address.getStreet(),
-              address.getZipCode(),
-              "'" + address.getAddress_id() + "'"};
-    try {
-      int updateAddress = addressService.updateAddressById(para);
-      if (updateAddress == 0) {
-        return null;
-      } else {
+
+    //更新信息
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public CustomerDBModel update(@RequestBody CustomerDBModel c) throws UnsupportedEncodingException {
         CustomerService customerService = new CustomerService();
         String[] pata
-                = {"'" + address.getAddress_id() + "'",
-                  c.getCustomer_name(),
-                  c.getPassword(),
-                  c.getGender(),
-                  c.getAge(),
-                  c.getIncome(),
-                  "'" + c.getCustomer_id() + "'"};
+                = { c.getGender(),
+                    c.getAge(),
+                    c.getIncome(),
+                    c.getCustomer_id() + ""};
         try {
-          int updateCustomer = customerService.updateCustomerNameById(pata);
-          if (updateCustomer == 0) {
-            return null;
-          } else {
-            return c;
-          }
+            int updateCustomer = customerService.updateCustomerNameById(pata);
+            if (updateCustomer == 0) {
+                return null;
+            } else {
+                return c;
+            }
         } catch (SQLException ex) {
-          Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-          return null;
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-      }
-    } catch (SQLException ex) {
-      Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-      return null;
     }
-
-  }
+    
+    //更新Address信息
+    @RequestMapping(value = "/update/address", method = RequestMethod.POST)
+    @ResponseBody
+    public AddressDBModel updateAddress(@RequestBody AddressDBModel a) throws UnsupportedEncodingException {
+        String[] pata
+                = {a.getState_(),
+                    a.getCity(),
+                    a.getStreet(),
+                    a.getZipCode(),
+                    a.getAddress_id() + ""};
+        try {
+            int updateCustomer = this.addressService.updateAddressById(pata);
+            if (updateCustomer == 0) {
+                return null;
+            } else {
+                return a;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }
