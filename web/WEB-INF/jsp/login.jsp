@@ -58,12 +58,52 @@
                                     <button class="btn btn-primary btn-block" type="button" onclick="login()">Log In</button>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button class="btn btn-primary btn-block" type="button">Browse</button>
+                                    <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#myModal">Sign up</button>
                                 </div>
 
                             </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form">
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Username</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="create_customer_name" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Password</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="password" id="create_customer_password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Confirm Password</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="password" id="create_customer_password2" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary">Sign up</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
+
+
                 </div>
             </div>
         </div>
