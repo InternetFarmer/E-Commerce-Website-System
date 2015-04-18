@@ -5,7 +5,6 @@
  */
 package edu.pitt.sis.infsci2730.finalProject.rest;
 
-import com.google.gson.Gson;
 import edu.pitt.sis.infsci2730.finalProject.model.AddressDBModel;
 import edu.pitt.sis.infsci2730.finalProject.model.CustomerDBModel;
 import edu.pitt.sis.infsci2730.finalProject.service.AddressService;
@@ -16,13 +15,11 @@ import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -34,63 +31,87 @@ public class UserRestAPI {
 
   //登录
   @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public ResponseEntity<String> login(HttpEntity<byte[]> requestEntity) throws UnsupportedEncodingException {
-    byte[] requestBody = requestEntity.getBody();
-    String str = new String(requestBody, "UTF-8");
-    Gson gson = new Gson();
-    Customer c = gson.fromJson(str, Customer.class);
+  @ResponseBody
+  public String login(@RequestBody Customer c) throws UnsupportedEncodingException {
 
     CustomerService customerService = new CustomerService();
     String[] para = {c.getCustomer_name(), c.getPassword()};
 
-    HttpHeaders responseHeaders = new HttpHeaders();
     try {
       CustomerDBModel customerDBModel = customerService.login(para);
       if (customerDBModel == null) {
-        return new ResponseEntity<String>("-1", responseHeaders, HttpStatus.CREATED);
+        return "-1";
       } else {
-        return new ResponseEntity<String>("1", responseHeaders, HttpStatus.CREATED);
+        return "1";
       }
     } catch (SQLException ex) {
       Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-      return new ResponseEntity<String>("0", responseHeaders, HttpStatus.CREATED);
+      return "0";
     }
   }
 
   //注册
   @RequestMapping(value = "/register", method = RequestMethod.POST)
-  public ResponseEntity<String> register(HttpEntity<byte[]> requestEntity) throws UnsupportedEncodingException {
-    byte[] requestBody = requestEntity.getBody();
-    String str = new String(requestBody, "UTF-8");
-    Gson gson = new Gson();
-    Customer c = gson.fromJson(str, Customer.class);
+  @ResponseBody
+  public Customer register(@RequestBody Customer c) throws UnsupportedEncodingException {
 
     AddressDBModel address = c.getAddress();
-    String[] para = {address.getCity(), address.getStreet(), address.getState_(), address.getZipCode()};
     AddressService addressService = new AddressService();
+    String[] para
+            = {address.getCity(),
+              address.getStreet(),
+              address.getState_(),
+              address.getZipCode()};
 
-    HttpHeaders responseHeaders = new HttpHeaders();
     try {
-      int addressDBModel = addressService.addAddress(para);
-      if (addressDBModel == 0) {
-        return new ResponseEntity<String>("-1", responseHeaders, HttpStatus.CREATED);
+      long addressId = addressService.addAddress(para);
+      if (addressId == 0) {
+        return null;
       } else {
-        return new ResponseEntity<String>("1", responseHeaders, HttpStatus.CREATED);
+        CustomerService customerService = new CustomerService();
+        String[] para2
+                = {"'" + addressId + "'",
+                  c.getCustomer_name(),
+                  c.getPassword(),
+                  c.getGender(),
+                  c.getAge(),
+                  c.getIncome()};
+
+        try {
+          int addCustomer = customerService.addCustomer(para2);
+          if (addCustomer == 0) {
+            return null;
+          } else {
+            return c;
+          }
+        } catch (SQLException ex) {
+          Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+          return null;
+        }
       }
     } catch (SQLException ex) {
       Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-      return new ResponseEntity<String>("0", responseHeaders, HttpStatus.CREATED);
+      return null;
     }
 
   }
 
   //更新信息
   @RequestMapping(value = "/update", method = RequestMethod.POST)
-  public ResponseEntity<Customer> update(HttpEntity<byte[]> requestEntity) throws UnsupportedEncodingException {
-    byte[] requestBody = requestEntity.getBody();
-    String str = new String(requestBody, "UTF-8");
-    Gson gson = new Gson();
-    Customer c = gson.fromJson(str, Customer.class);
-
+  @ResponseBody
+  public Customer update(@RequestBody Customer c) throws UnsupportedEncodingException {
+    CustomerService customerService = new CustomerService();
+    String[] pata = {c.getCustomer_name(), "'" + c.getCustomer_id() + "'"};
+    try {
+      int updateCustomer = customerService.updateCustomerNameById(pata);
+      if (updateCustomer == 0) {
+        return null;
+      } else {
+        return c;
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+      return null;
+    }
   }
 }
