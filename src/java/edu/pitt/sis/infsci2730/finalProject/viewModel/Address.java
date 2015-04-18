@@ -16,6 +16,14 @@ public class Address implements Serializable {
     private String street;
     private String zipCode;
 
+    Address(AddressDBModel address) {
+       this.address_id = address.getAddress_id();
+       this.city = address.getCity();
+       this.state_ = address.getState_();
+       this.street = address.getStreet();
+       this.zipCode = address.getZipCode();
+    }
+
     public int getAddress_id() {
         return address_id;
     }

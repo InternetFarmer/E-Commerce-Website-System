@@ -4,6 +4,8 @@
     Author     : yanyanzhou
 --%>
 
+<%@page import="java.util.LinkedList"%>
+<%@page import="java.util.Map"%>
 <%@ include file="include.jsp" %>
 <%@page import="edu.pitt.sis.infsci2730.finalProject.viewModel.Customer"%>
 <%@page import="edu.pitt.sis.infsci2730.finalProject.viewModel.Product"%>
@@ -18,6 +20,7 @@
         response.sendRedirect("../index.jsp");
         return;
     }
+    Map<String, Object> map = (Map)request.getAttribute("modelMap");
 %>
 <html lang="en">
     <head>
@@ -34,29 +37,7 @@
 
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Sales System</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="customerProfile.jsp">Profile</a></li>
-                        <li><a href="customerHomepage.jsp">Search Products</a></li>
-                        <li><a href="customerOrderHistory.jsp">Order History</a></li>
-                        <li><a href=".jsp">Shopping Bag</a></li>
-                        <li><a href="../Logout">Log out</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
+        <%@include file="include.jsp" %>
 
         <div class="container-fluid">
             <div class="row-main">
@@ -80,7 +61,7 @@
                             <select id="product_category" class="form-control">
                                 <option value="-1">Category</option>
                                 <%
-                                    List<ProductCategory> l = ;
+                                    List<ProductCategory> l = (LinkedList)map.get("productCategory");
                                     for (int i = 0; i < l.size(); i++) {
                                         out.println("<option value='" + l.get(i).getCategory_id() + "'>" + l.get(i).getCategory_name() + "</option>");
                                     }
@@ -124,19 +105,14 @@
                                     </thead>
                                     <tbody id="displayProductArea">
                                         <%
-                                            List<Product> lp = ;
+                                            LinkedList<Product> lp = (LinkedList)map.get("modelMap");
                                             for (int j = 0; j < lp.size(); j++) {
                                                 Product p = lp.get(j);
                                                 out.println("<tr id='product-" + p.getProduct_id() + "'>");
                                                 out.println("<td>" + p.getProduct_id() + "</td>");
                                                 out.println("<td>" + p.getProduct_name() + "</td>");
                                                 out.println("<td>" + p.getPrice() + "</td>");
-                                                out.println("<td>" + .getProductCategoryHandler().getProductCategoryById(p.getCategory_id() + "").getCategory_name() + "</td>"
-                                                );
-                                                out.println("<td>" + p.getInventory_amount() + "</td>");
-                                        %>
-                                        </tr>
-                                        <%
+                                                out.println("<td>" + p.getInventory_amount() + "</td></tr>");
                                             }
                                         %>
                                     </tbody>

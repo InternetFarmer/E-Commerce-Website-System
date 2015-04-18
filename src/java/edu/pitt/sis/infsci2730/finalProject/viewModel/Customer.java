@@ -19,8 +19,18 @@ public class Customer implements Serializable{
     private String gender;
     private String age;
     private String income;
-    private AddressDBModel address;
+    private Address address;
 
+    public Customer(CustomerDBModel cm) {
+        this.customer_id = cm.getCustomer_id();
+        this.address_id = cm.getAddress_id();
+        this.customer_name = cm.getCustomer_name();
+        this.gender = cm.getGender();
+        this.age = cm.getAge();
+        this.income = cm.getIncome();
+        //this.address = new Address(cm.getAddress());
+    }
+    
     public int getCustomer_id() {
         return customer_id;
     }
@@ -77,11 +87,13 @@ public class Customer implements Serializable{
         this.income = income;
     }
 
-    public AddressDBModel getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(AddressDBModel address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
+    
+    
 }

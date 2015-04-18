@@ -1,20 +1,14 @@
-
-<%@page import="edu.pitt.sis.infsci2730.finalProject.viewModel.Customer"%>
+<%@page import="edu.pitt.sis.infsci2730.finalProject.model.AddressDBModel"%>
+<%@page import="edu.pitt.sis.infsci2730.finalProject.model.CustomerDBModel"%>
 <%@page import="edu.pitt.sis.infsci2730.finalProject.service.CustomerService"%>
-<%@page import="edu.pitt.sis.infsci2730.finalProject.viewModel.Address"%>
 <%@page import="edu.pitt.sis.infsci2730.finalProject.service.AddressService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    Customer c = (Customer) request.getSession().getAttribute("Customer");
-    if (c == null) {
-        response.sendRedirect("../index.jsp");
-        return;
-    }
-    Customer customer = null;
+    CustomerDBModel customer = null;
 
-    customer = CustomerHandler.getCustomerHandler().getCustomerById(c.getCustomer_id() + "");
+    customer = (CustomerDBModel) request.getAttribute("customer");
 
-    Address currentAddress = AddressHandler.getAddressHandler().getAddressById(c.getAddress_id() + "");
+    AddressDBModel currentAddress = customer.getAddress();
 %>
 
 <%@ include file="include.jsp" %>
@@ -29,35 +23,10 @@
         <!-- CSS -->
         <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />">
         <link rel="stylesheet" href="<c:url value='/resources/css/stylesheet.css' />">
-
     </head>
-
+    
     <body>
-
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Sales System</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="customerProfile.jsp">Profile</a></li>
-                        <li><a href="product.jsp">Search Products</a></li>
-                        <li><a href="customerOrderHistory.jsp">Order History</a></li>
-                        <li><a href="shoppingBag.jsp">Shopping Bag</a></li>
-                        <li><a href="../Logout">Log out</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
-
+        <%@ include file="nav.jsp" %>
         <div class="container-fluid">
             <div class="row-main">
 
@@ -213,7 +182,7 @@
             </div>
         </div>
     </body>
-    
+
     <%@ include file="footer.jsp" %>
     <script src="<c:url value='/resources/js/login.js'/>"></script>
 </html>
