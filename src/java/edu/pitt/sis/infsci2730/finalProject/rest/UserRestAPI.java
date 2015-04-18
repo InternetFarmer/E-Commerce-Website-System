@@ -10,7 +10,7 @@ import edu.pitt.sis.infsci2730.finalProject.model.CustomerDBModel;
 import edu.pitt.sis.infsci2730.finalProject.service.AddressService;
 import edu.pitt.sis.infsci2730.finalProject.service.CustomerService;
 import edu.pitt.sis.infsci2730.finalProject.viewModel.Customer;
-import edu.pitt.sis.infsci2730.finalProject.web.LoginController;
+import edu.pitt.sis.infsci2730.finalProject.web.UserController;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -47,7 +47,7 @@ public class UserRestAPI {
                 return "1";
             }
         } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             return "0";
         }
     }
@@ -87,12 +87,12 @@ public class UserRestAPI {
                         return c;
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
                     return null;
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -111,7 +111,7 @@ public class UserRestAPI {
             c.setAddress(addressservice.getAddressById(c.getAddress_id()+""));
             return c;
         } catch (Exception ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -150,12 +150,12 @@ public class UserRestAPI {
             return c;
           }
         } catch (SQLException ex) {
-          Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+          Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
           return null;
         }
       }
     } catch (SQLException ex) {
-      Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
       return null;
     }
 

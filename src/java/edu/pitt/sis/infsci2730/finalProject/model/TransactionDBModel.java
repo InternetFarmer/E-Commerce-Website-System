@@ -19,6 +19,7 @@ public class TransactionDBModel implements Serializable {
     private Timestamp transaction_date;
     private int customer_id;
 //    private int salesperson_id;
+    private int totoalAmount;
 
     public int getTransaction_id() {
         return transaction_id;
@@ -51,6 +52,12 @@ public class TransactionDBModel implements Serializable {
 //    public void setSalesperson_id(int salesperson_id) {
 //        this.salesperson_id = salesperson_id;
 //    }
-    
-    
+
+    public int getTotoalAmount() {
+        return totoalAmount;
+    }
+
+    public void setTotoalAmount(int totoalAmount) {
+        this.totoalAmount = totoalAmount;
+    }
 }

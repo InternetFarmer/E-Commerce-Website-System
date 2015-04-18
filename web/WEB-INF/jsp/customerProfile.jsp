@@ -5,9 +5,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     CustomerDBModel customer = null;
-
     customer = (CustomerDBModel) request.getAttribute("customer");
-
     AddressDBModel currentAddress = customer.getAddress();
 %>
 

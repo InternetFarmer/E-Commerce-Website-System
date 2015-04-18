@@ -4,20 +4,17 @@
     Author     : yanyanzhou
 --%>
 
+<%@page import="edu.pitt.sis.infsci2730.finalProject.model.TransactionDBModel"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Map"%>
 <%@page import="edu.pitt.sis.infsci2730.finalProject.viewModel.Customer"%>
 <%@page import="edu.pitt.sis.infsci2730.finalProject.viewModel.Transaction"%>
 <%@page import="edu.pitt.sis.infsci2730.finalProject.service.TransactionService"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%
-    Customer customer = (Customer) request.getSession().getAttribute("Customer");
-    if (customer == null) {
-        response.sendRedirect("../index.jsp");
-        return;
-    }
+    Map<String, Object> map = (Map) request.getAttribute("modelMap");
 %>
-
 <%@ include file="include.jsp" %>
 <html lang="en">
     <head>
@@ -34,29 +31,7 @@
 
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Sales System</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="customerProfile.jsp">Profile</a></li>
-                        <li><a href="customerHomepage.jsp">Search Products</a></li>
-                        <li><a href="customerOrderHistory.jsp">Order History</a></li>
-                        <li><a href="shoppingBag.jsp">Shopping Bag</a></li>
-                        <li><a href="../Logout">Log out</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
+        <%@ include file="nav.jsp" %>
 
         <div class="container-fluid">
             <div class="row-main">
@@ -77,27 +52,29 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Date</th>
+                                            <th>Order ID</th>
+                                            <th>Order Date</th>
                                             <th>Total Amount</th>
-                                            <th>Functions</th>
+                                            <th>Status</th>
+                                            <th>Details</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <%
-                                            List<Transaction> lt = TransactionHandler.getTransactionHandler().GetTransactionByCustomerID(currentEmployee.getCustomer_id() + "");
+                                            List<TransactionDBModel> lt = (ArrayList) map.get("transactionList");
                                             if (lt != null) {
-                                                for (Transaction t : lt) {
+                                                for (TransactionDBModel t : lt) {
                                                     out.println("<tr>");
                                                     out.println("<td>" + t.getTransaction_id() + "</td>");
                                                     out.println("<td>" + t.getTransaction_date() + "</td>");
-                                                    out.println("<td>" + TransactionHandler.getTransactionHandler().GetTranactionTotalAmount(t.getTransaction_id() + "") + "</td>");
+                                                    out.println("<td>" + t.getTotoalAmount() + "</td>");
+                                                    out.println("<td>Delieved</td>");
                                         %>
                                     <td>
                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" onclick="showTransaction(<%=t.getTransaction_id()%>)">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </button>
-                                    </td>
+                                    </td></tr>
                                     <%
                                             }
                                         }

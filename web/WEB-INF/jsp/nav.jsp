@@ -16,12 +16,14 @@
             <a class="navbar-brand" href="#">Sales System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="<c:url value='/products'/>">Products</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="customerProfile.jsp">Profile</a></li>
-                <li><a href="product.jsp">Search Products</a></li>
-                <li><a href="customerOrderHistory.jsp">Order History</a></li>
-                <li><a href="shoppingBag.jsp">Shopping Bag</a></li>
-                <li><a href="../Logout">Log out</a></li>
+                <li><a href="<c:url value='/user'/>">Profile</a></li>
+                <li><a href="<c:url value='/orderhistory'/>">Order History</a></li>
+                <li><a href="<c:url value='/shoppingBag'/>">Cart</a></li>
+                <li><a href="<c:url value='/logout'/>">Log out</a></li>
             </ul>
         </div>
     </div>

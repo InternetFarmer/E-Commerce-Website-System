@@ -4,6 +4,9 @@
     Author     : yanyanzhou
 --%>
 
+<%@page import="edu.pitt.sis.infsci2730.finalProject.model.ProductDBModel"%>
+<%@page import="edu.pitt.sis.infsci2730.finalProject.model.ProductCategoryDBModel"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.util.Map"%>
 <%@ include file="include.jsp" %>
@@ -15,12 +18,7 @@
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <%
-    Customer customer = (Customer) request.getSession().getAttribute("customer");
-    if (customer == null) {
-        response.sendRedirect("../index.jsp");
-        return;
-    }
-    Map<String, Object> map = (Map)request.getAttribute("modelMap");
+    Map<String, Object> map = (Map) request.getAttribute("modelMap");
 %>
 <html lang="en">
     <head>
@@ -37,7 +35,7 @@
 
     <body>
 
-        <%@include file="include.jsp" %>
+        <%@include file="nav.jsp" %>
 
         <div class="container-fluid">
             <div class="row-main">
@@ -61,7 +59,7 @@
                             <select id="product_category" class="form-control">
                                 <option value="-1">Category</option>
                                 <%
-                                    List<ProductCategory> l = (LinkedList)map.get("productCategory");
+                                    List<ProductCategoryDBModel> l = (ArrayList) map.get("productCategory");
                                     for (int i = 0; i < l.size(); i++) {
                                         out.println("<option value='" + l.get(i).getCategory_id() + "'>" + l.get(i).getCategory_name() + "</option>");
                                     }
@@ -105,16 +103,23 @@
                                     </thead>
                                     <tbody id="displayProductArea">
                                         <%
-                                            LinkedList<Product> lp = (LinkedList)map.get("modelMap");
+                                            ArrayList<ProductDBModel> lp = (ArrayList) map.get("productList");
                                             for (int j = 0; j < lp.size(); j++) {
-                                                Product p = lp.get(j);
+                                                ProductDBModel p = lp.get(j);
                                                 out.println("<tr id='product-" + p.getProduct_id() + "'>");
                                                 out.println("<td>" + p.getProduct_id() + "</td>");
                                                 out.println("<td>" + p.getProduct_name() + "</td>");
                                                 out.println("<td>" + p.getPrice() + "</td>");
-                                                out.println("<td>" + p.getInventory_amount() + "</td></tr>");
-                                            }
+                                                out.println("<td>" + p.getInventory_amount() + "</td>");
                                         %>
+                                    <td>
+                                        <button id='button' class='btn btn-primary btn-sm' data-id="<%=p.getProduct_id()%>">
+                                            <span class="glyphicon glyphicon-plus"></span>Add to Bag
+                                        </button>
+                                    </td>
+                                    </tr>
+                                    <%}
+                                    %>
                                     </tbody>
                                 </table>
                             </div>
@@ -128,7 +133,7 @@
 
     </body>
     <%@ include file="footer.jsp" %>
-    <script src="<c:url value='/resources/js/login.js'/>"></script>
+    <script src="<c:url value='/resources/js/products.js'/>"></script>
 </html>
 
 

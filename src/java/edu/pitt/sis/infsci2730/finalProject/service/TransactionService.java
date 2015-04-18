@@ -37,27 +37,31 @@ public class TransactionService {
         return TransactionDao.GetAllTransaction();
     }
 
-    public static SqlRowSet GetTranactionTotalAmount(final String id) throws SQLException {
-        return TransactionDao.GetTranactionTotalAmount(id);
+    public int GetTranactionTotalAmount(final String id) throws SQLException {
+        SqlRowSet s = TransactionDao.GetTranactionTotalAmount(id);
+        if(s.next()){
+            return s.getInt(1);
+        }
+        return -1;
     }
 
     //search transactions by date (a period of time)
-    public static SqlRowSet GetTransactionByDate(final String[] array) throws SQLException {
+    public SqlRowSet GetTransactionByDate(final String[] array) throws SQLException {
         return TransactionDao.GetTransactionByDate(array);
     }
 
     //insert new transaction by Transaction_id
-    public static int InsertTransactionByID(final String[] array) throws SQLException {
+    public int InsertTransactionByID(final String[] array) throws SQLException {
         return TransactionDao.InsertTransactionByID(array);
     }
 
     //delete transactions by id
-    public static int DeleteTransactionByID(final String id) throws SQLException {
+    public int DeleteTransactionByID(final String id) throws SQLException {
         return TransactionDao.DeleteTransactionByID(id);
     }
 
     //update transactions by id
-    public static int UpdateTransactionByID(final String[] array) throws SQLException {
+    public int UpdateTransactionByID(final String[] array) throws SQLException {
         return TransactionDao.UpdateTransactionByID(array);
     }
 }
