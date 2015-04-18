@@ -58,4 +58,6 @@ public class RecordDBModel implements Serializable {
     public void setProduct(ProductDBModel product) {
         this.product = product;
     }
+    
+    
 }

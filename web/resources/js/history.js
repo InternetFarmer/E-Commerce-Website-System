@@ -7,7 +7,9 @@ $(function() {
             dataType: "json",
             contentType: "application/json",
             success: function(records) {
-                console.log(records);
+                $.each(records,function(record){
+					console.log(record);
+                });
             },
             error: function() {
                 console.log("111");
