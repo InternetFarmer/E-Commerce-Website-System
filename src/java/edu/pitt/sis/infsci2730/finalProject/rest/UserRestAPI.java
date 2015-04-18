@@ -30,8 +30,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/rest/users")
 public class UserRestAPI {
-    
+
     private final AddressService addressService = new AddressService();
+
     //登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
@@ -120,9 +121,10 @@ public class UserRestAPI {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public CustomerDBModel update(@RequestBody CustomerDBModel c) throws UnsupportedEncodingException {
+        
         CustomerService customerService = new CustomerService();
         String[] pata
-                = { c.getGender(),
+                = {c.getGender(),
                     c.getAge(),
                     c.getIncome(),
                     c.getCustomer_id() + ""};
@@ -138,7 +140,7 @@ public class UserRestAPI {
             return null;
         }
     }
-    
+
     //更新Address信息
     @RequestMapping(value = "/update/address", method = RequestMethod.POST)
     @ResponseBody

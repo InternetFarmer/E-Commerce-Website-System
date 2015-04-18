@@ -51,7 +51,7 @@ public class TransactionService {
     }
 
     //insert new transaction by Transaction_id
-    public int InsertTransactionByID(final String[] array) throws SQLException {
+    public TransactionDBModel InsertTransactionByID(final String[] array) throws SQLException {
         return TransactionDao.InsertTransactionByID(array);
     }
 

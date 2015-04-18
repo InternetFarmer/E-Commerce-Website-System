@@ -27,7 +27,7 @@ public class RecordService {
     }
 
     //insert new record by transaction_id
-    public int InsertRecordByTransactionIDAndProductId(final String[] array) throws SQLException {
+    public RecordDBModel InsertRecordByTransactionIDAndProductId(final String[] array) throws SQLException {
         return RecordDao.InsertRecordByTransactionIDAndProductId(array);
     }
 
