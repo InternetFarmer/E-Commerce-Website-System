@@ -19,8 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/home")
 public class IndexController {
 
+<<<<<<< Updated upstream:src/java/edu/pitt/sis/infsci2730/finalProject/web/IndexController.java
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView mypage(HttpSession session) {
         return new ModelAndView("index");
+=======
+    @RequestMapping("/login")
+    public String page() {
+        return "index";
+>>>>>>> Stashed changes:src/java/edu/pitt/sis/infsci2730/finalProject/web/LoginController.java
     }
 }
