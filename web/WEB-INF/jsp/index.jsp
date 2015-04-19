@@ -52,37 +52,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">Gender</label>
-                                <div class="col-sm-6">
-                                    <input type="text" id="update_gender" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Age</label>
-                                <div class="col-sm-6">
-                                    <input type="text" id="update_age" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Income</label>
-                                <div class="col-sm-6">
-                                    <input type="text" id="update_income" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label"></label>
-                                <div class="col-sm-2">
-                                    <input type="text" id="update_city" class="form-control">
-                                </div>
-                                <div class="col-sm-2">
-                                    <input type="text" id="update_state" class="form-control">
-                                </div>
-                                <div class="col-sm-2">
-                                    <input type="text" id="update_zipcode" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-4">
                                     <button class="btn btn-primary btn-block" type="button" id="loginButton">Log In</button>
                                 </div>
@@ -110,19 +79,49 @@
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Username</label>
                                             <div class="col-sm-6">
-                                                <input type="text" id="create_customer_name" class="form-control">
+                                                <input type="text" id="create_customer_name" class="form-control" placeholder="Username">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Password</label>
                                             <div class="col-sm-6">
-                                                <input type="password" id="create_customer_password" class="form-control">
+                                                <input type="password" id="create_customer_password" class="form-control" placeholder="Password">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Confirm Password</label>
                                             <div class="col-sm-6">
-                                                <input type="password" id="create_customer_password2" class="form-control">
+                                                <input type="password" id="create_customer_password2" class="form-control" placeholder="Confirm Password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Gender</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="gender" class="form-control" placeholder="Gender">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Age</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="age" class="form-control" placeholder="Age">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Income</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="income" class="form-control" placeholder="Income">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Address</label>
+                                            <div class="col-sm-2">
+                                                <input type="text" id="city" class="form-control" placeholder="City">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" id="state" class="form-control" placeholder="State">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" id="zipcode" class="form-control" placeholder="Zipcode">
                                             </div>
                                         </div>
                                     </form>
