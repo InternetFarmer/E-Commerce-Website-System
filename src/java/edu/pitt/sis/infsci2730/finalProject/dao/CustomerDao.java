@@ -60,7 +60,7 @@ public class CustomerDao {
     public static int addCustomer(final String[] para) throws SQLException {
         return jdbcTemplate.update("insert into Customer (address_id, customer_name,password, gender,age,income) values (?,?,?,?,?,?)",
                 para,
-                new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.CHAR, java.sql.Types.INTEGER, java.sql.Types.VARCHAR});
+                new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR, java.sql.Types.CHAR, java.sql.Types.INTEGER, java.sql.Types.INTEGER});
     }
 
     public static List<CustomerDBModel> SearchCustomer(final String name) throws SQLException {

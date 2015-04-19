@@ -36,8 +36,13 @@
         <div id="content">
             <div class="container">
                 <div class="row">
-                    <div id="login_block" class="col-sm-4 col-sm-offset-4"  style="background-color: #ffffff;opacity:0.9;">  
+                    <div id="login_block" class="col-sm-4 col-sm-offset-4"  style="background-color: #ffffff;opacity:0.9;"> 
                         <h3 align="center">Log In</h3>
+
+                        <div id="message-box" class="alert alert-success alert-dismissible" style="display:none" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong id='message'>Test</strong>
+                        </div>
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Username</label>
@@ -114,7 +119,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Address</label>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-6">
+                                                <input type="text" id="street" class="form-control" placeholder="Street" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-2 col-sm-offset-4">
                                                 <input type="text" id="city" class="form-control" placeholder="City" required>
                                             </div>
                                             <div class="col-sm-2">

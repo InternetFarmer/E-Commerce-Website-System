@@ -73,10 +73,21 @@ public class ProductDao {
 
     //search product with multiply parameters (category,name,price)
     public static List<ProductDBModel> GetProduct(final String[] array) throws SQLException {
-        return jdbcTemplate.query("select * from Product where category_id =? and product_name like '%" + array[1] + "%' and price>=? and price<=?",
-                new Object[]{array[0], array[2], array[3]},
-                new int[]{java.sql.Types.INTEGER, java.sql.Types.VARCHAR, java.sql.Types.VARCHAR},
-                new ProductRowMapper());
+        String sql = "select * from Product where";
+        if (!array[0].equals("")) {
+            sql += " category_id = " + array[0] + " and";
+        }
+        if (!array[1].equals("")) {
+            sql += " product_name like '%" + array[1] + "%' and";
+        }
+        if (!array[2].equals("")) {
+            sql += " price >= " + array[2] + " and";
+        }
+        if (!array[3].equals("")) {
+            sql += " price <= " + array[3] + " and";
+        }
+        sql = sql.substring(0, sql.length() - 3);
+        return jdbcTemplate.query(sql, new ProductRowMapper());
     }
 
     //insert products by id

@@ -60,6 +60,7 @@ public class UserRestAPI {
     public CustomerDBModel register(@RequestBody CustomerDBModel c) throws UnsupportedEncodingException {
 
         AddressDBModel address = c.getAddress();
+        System.out.println("here");
         AddressService addressService = new AddressService();
         String[] para
                 = {address.getCity(),
@@ -74,7 +75,7 @@ public class UserRestAPI {
             } else {
                 CustomerService customerService = new CustomerService();
                 String[] para2
-                        = {"'" + addressId + "'",
+                        = { addressId + "",
                             c.getCustomer_name(),
                             c.getPassword(),
                             c.getGender(),

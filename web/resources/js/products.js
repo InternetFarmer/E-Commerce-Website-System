@@ -29,4 +29,38 @@ $(function() {
             }
         });
     });
+
+    $("#search-button").on("click", function() {
+        //cache DOM
+        var input_id = $("#product_id");
+        var input_name = $("#product_name");
+        var input_category = $("#product_category");
+        var input_upper = $("#price_from");
+        var input_down = $("#price_to");
+        var display_area = $("#displayProductArea");
+
+        //get value
+        var product_id = input_id.val();
+        var product_name = input_name.val();
+        var product_category = input_category.val();
+        var price_range_down = input_upper.val();
+        var price_range_upper = input_down.val();
+
+        console.log(product_category);
+        //send request
+        $.ajax({
+            type: "GET",
+            url: "/eBusiness/rest/products/search?product_id=" + product_id + "&product_name=" + product_name + "&product_category=" + product_category + "&price_from=" + price_range_down + "&price_to=" + price_range_upper,
+            success: function(products) {
+                console.log(products);
+                display_area.html("");
+                $.each(products, function(index, product) {
+                    display_area.append("<tr id='product-" + product.product_id + "'><td>" + product.product_id + "</td><td>" + product.product_name + "</td><td>" + product.price + "</td><td>" + product.category.category_name + "</td><td>" + product.price + "</td><td><button id='button' class='btn btn-primary btn-sm' data-id='" + product.product_id + "'><span class='glyphicon glyphicon-plus'></span>Add to Bag</button></td></tr>");
+                });
+            },
+            error: function() {
+                console.log("error");
+            }
+        });
+    });
 });

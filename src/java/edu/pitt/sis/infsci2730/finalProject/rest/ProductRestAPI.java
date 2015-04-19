@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.catalina.tribes.util.Arrays;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -144,36 +145,30 @@ public class ProductRestAPI {
     }
 
     // search products
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseBody
     public List<ProductDBModel> searchProduct(@RequestParam("product_id") String product_id,
             @RequestParam("product_name") String product_name,
             @RequestParam("product_category") String product_category,
             @RequestParam("price_from") String price_from,
             @RequestParam("price_to") String price_to) throws UnsupportedEncodingException, SQLException {
-
         List<ProductDBModel> list = new ArrayList<ProductDBModel>();
         if (!product_id.equals("")) {     // search by product ID
             ProductDBModel product = productService.GetProductByID(product_id);
+            product.setCategory(this.categoryService.getProductCategoryById(product.getCategory_id()+""));
             list.add(product);
             return list;
-        } else if (!product_name.equals("") && !product_category.equals("")) {  //search by product name and category
-            if (price_from.equals("") && price_to.equals("")) {  // no price range
-                price_from = "0";
-                price_to = Integer.MAX_VALUE + "";
-
-            } else if (price_from.equals("")) {  // no from
-                price_from = "0";
-
-            } else if (price_to.equals("")) {  // no to
-                price_to = Integer.MAX_VALUE + "";
-
-            }
+        } else {  //search by product name and category
+            if(product_category.equals("-1"))
+                product_category = "";
             String[] para = {product_category, product_name, price_from, price_to};
             list = productService.GetProduct(para);
+            int size = list.size();
+            for (int i = 0; i < size; i++) {
+                ProductDBModel p = list.get(i);
+                p.setCategory(this.categoryService.getProductCategoryById(p.getCategory_id()+""));
+            }
             return list;
-        } else {
-            return null;
         }
 
     }

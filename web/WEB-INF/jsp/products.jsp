@@ -74,7 +74,7 @@
                             <label>Price To</label>
                             <input type="text" id="price_to" class="form-control" placeholder="to">
                         </div>
-                        <button class="btn btn-primary btn-block" type="button" onclick="searchProduct()">Search</button>
+                        <button class="btn btn-primary btn-block" type="button" id="search-button">Search</button>
                     </form>
                 </div>
 
@@ -99,6 +99,7 @@
                                             <th>Price</th>
                                             <th>Category</th>
                                             <th>Inventory</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody id="displayProductArea">
@@ -110,6 +111,7 @@
                                                 out.println("<td>" + p.getProduct_id() + "</td>");
                                                 out.println("<td>" + p.getProduct_name() + "</td>");
                                                 out.println("<td>" + p.getPrice() + "</td>");
+                                                out.println("<td>" + p.getCategory().getCategory_name() + "</td>");
                                                 out.println("<td>" + p.getInventory_amount() + "</td>");
                                         %>
                                     <td>

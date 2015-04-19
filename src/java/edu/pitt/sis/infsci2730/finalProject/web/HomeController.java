@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/home")
-public class IndexController {
+public class HomeController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView mypage(HttpSession session) {
