@@ -51,6 +51,36 @@
                                     <input type="password" id="password" class="form-control" placeholder="Password" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Gender</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="update_gender" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Age</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="update_age" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Income</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="update_income" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" id="update_city" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" id="update_state" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" id="update_zipcode" class="form-control">
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-4">
