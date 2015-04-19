@@ -18,7 +18,7 @@ public class RecordService {
 
     //search record by transaction_id
     public List<RecordDBModel> GetRecordByTransactionID(final String id) throws SQLException {
-        return RecordDao.GetRecordByProductID(id);
+        return RecordDao.GetRecordByTransactionID(id);
     }
 
     //search record by product_id
@@ -27,7 +27,7 @@ public class RecordService {
     }
 
     //insert new record by transaction_id
-    public RecordDBModel InsertRecordByTransactionIDAndProductId(final String[] array) throws SQLException {
+    public int InsertRecordByTransactionIDAndProductId(final String[] array) throws SQLException {
         return RecordDao.InsertRecordByTransactionIDAndProductId(array);
     }
 

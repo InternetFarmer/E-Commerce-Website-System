@@ -50,30 +50,10 @@ public class RecordDao {
     }
 
     //insert new record by transaction_id
-    public static RecordDBModel InsertRecordByTransactionIDAndProductId(final String[] para) throws SQLException {
-        KeyHolder holder = new GeneratedKeyHolder();
-        jdbcTemplate.update(new PreparedStatementCreator() {
-
-            String sql = "insert into Record values(?,?,?,?)";//transaction_id,product_id,amount,price
-
-            @Override
-            public PreparedStatement createPreparedStatement(Connection connection)
-                    throws SQLException {
-                PreparedStatement ps = connection.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
-                ps.setString(1, para[0]);
-                ps.setString(2, para[1]);
-                ps.setString(3, para[2]);
-                ps.setString(4, para[3]);
-
-                return ps;
-            }
-        }, holder);
-
-        int newId = holder.getKey().intValue();
-
-        return jdbcTemplate.queryForObject("select * from Record where TRANSACTION_ID=" + para[0]
-                + " and PRODUCT_ID=" + para[1],
-                new RecordRowMapper());
+    public static int InsertRecordByTransactionIDAndProductId(final String[] para) throws SQLException {
+        return jdbcTemplate.update("insert into Record values(?,?,?,?)",
+                para,
+                new int[]{java.sql.Types.INTEGER, java.sql.Types.INTEGER, java.sql.Types.INTEGER, java.sql.Types.INTEGER});
     }
 
     //delete records by transaction_id

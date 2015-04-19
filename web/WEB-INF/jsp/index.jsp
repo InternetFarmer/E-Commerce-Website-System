@@ -79,56 +79,56 @@
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Username</label>
                                             <div class="col-sm-6">
-                                                <input type="text" id="create_customer_name" class="form-control" placeholder="Username">
+                                                <input type="text" id="create_customer_name" class="form-control" placeholder="Username" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Password</label>
                                             <div class="col-sm-6">
-                                                <input type="password" id="create_customer_password" class="form-control" placeholder="Password">
+                                                <input type="password" id="create_customer_password" class="form-control" placeholder="Password" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Confirm Password</label>
                                             <div class="col-sm-6">
-                                                <input type="password" id="create_customer_password2" class="form-control" placeholder="Confirm Password">
+                                                <input type="password" id="create_customer_password2" class="form-control" placeholder="Confirm Password" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Gender</label>
                                             <div class="col-sm-6">
-                                                <input type="text" id="gender" class="form-control" placeholder="Gender">
+                                                <input type="text" id="gender" class="form-control" placeholder="Gender" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Age</label>
                                             <div class="col-sm-6">
-                                                <input type="text" id="age" class="form-control" placeholder="Age">
+                                                <input type="text" id="age" class="form-control" placeholder="Age" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Income</label>
                                             <div class="col-sm-6">
-                                                <input type="text" id="income" class="form-control" placeholder="Income">
+                                                <input type="text" id="income" class="form-control" placeholder="Income" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Address</label>
                                             <div class="col-sm-2">
-                                                <input type="text" id="city" class="form-control" placeholder="City">
+                                                <input type="text" id="city" class="form-control" placeholder="City" required>
                                             </div>
                                             <div class="col-sm-2">
-                                                <input type="text" id="state" class="form-control" placeholder="State">
+                                                <input type="text" id="state" class="form-control" placeholder="State" required>
                                             </div>
                                             <div class="col-sm-2">
-                                                <input type="text" id="zipcode" class="form-control" placeholder="Zipcode">
+                                                <input type="text" id="zipcode" class="form-control" placeholder="Zipcode" required>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-primary">Sign up</button>
+                                    <button type="button" class="btn btn-primary" id="sign-up-button">Sign up</button>
                                 </div>
                             </div>
                         </div>

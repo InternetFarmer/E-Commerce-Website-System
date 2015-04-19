@@ -32,7 +32,7 @@ $(function() {
                         alert("internal error");
                         break;
                     case 1:
-                        window.location.href = '/eBusiness/user/login?customer='+user.customer_name+"&password="+user.password;
+                        window.location.href = '/eBusiness/user/login?customer=' + user.customer_name + "&password=" + user.password;
                         break;
                     default:
                         alert("something is wrong! lol");
@@ -42,5 +42,21 @@ $(function() {
                 alert("loading error");
             }
         });
+    });
+
+    $("#sign-up-button").on("click", function() {
+        var username = $("#create_customer_name").val();
+        var password = $("#create_customer_password").val();
+        var confirm = $("#create_customer_password2").val();
+        var gender = $("#gender").val();
+        var age = $("#age").val();
+        var income = $("#income").val();
+        var city = $("#city").val();
+        var state = $("#state").val();
+        var zipCode = $("#zipcode").val();
+
+        if (username === "" || password === "" || confirm === "" || gender === "" || age === "" || income === "" || city === "" || state === "" || zipCode === "") {
+
+        }
     });
 });

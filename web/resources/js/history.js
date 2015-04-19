@@ -9,6 +9,7 @@ $(function() {
             dataType: "json",
             contentType: "application/json",
             success: function(records) {
+				console.log(records);
                 $.each(records,function(index,record){
 					console.log(record);
 					display.append("<tr><td>" + record.product_id + "</td>\n\

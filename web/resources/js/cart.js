@@ -48,6 +48,8 @@ $(function() {
             data: JSON.stringify(recordList),
             success: function(transaction) {
                 console.log(transaction);
+                sessionStorage.setItem("bag", "");
+                $("#shoppingbagarea tr").remove();
             },
             error: function() {
                 console.log("fail");
