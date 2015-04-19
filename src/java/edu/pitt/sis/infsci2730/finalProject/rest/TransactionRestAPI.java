@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/rest/transaction")
 public class TransactionRestAPI {
-    
+
     private final RecordService recourdService = new RecordService();
     private final TransactionService transactionService = new TransactionService();
     private final ProductService productService = new ProductService();
@@ -36,24 +36,27 @@ public class TransactionRestAPI {
     // add transaction 
     @RequestMapping(value = "/checkout", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
     @ResponseBody
-    public TransactionDBModel addTransaction(@RequestBody List<RecordDBModel> list, HttpSession session)
-            throws UnsupportedEncodingException, SQLException {
-        
+    public TransactionDBModel addTransaction(@RequestBody List<RecordDBModel> list, HttpSession session) {
         CustomerDBModel customer = (CustomerDBModel) session.getAttribute("customer");
-        
-        TransactionDBModel newTransaction = transactionService.InsertTransactionByID(new String[]{customer.getCustomer_id() + ""});
-        
-        for (RecordDBModel record : list) {
-            String[] para = {newTransaction.getTransaction_id() + "",
-                record.getProduct_id() + "",
-                record.getAmount() + "",
-                record.getPrice() + ""};
-            RecordDBModel newRecord = recourdService.InsertRecordByTransactionIDAndProductId(para);
+        if (customer == null) {
+            return null;
         }
 
-        //try catch...
-        return newTransaction;
-        
+        for (RecordDBModel record : list) {
+            try {
+                TransactionDBModel newTransaction = transactionService.InsertTransactionByID(new String[]{customer.getCustomer_id() + ""});
+                String[] para = {newTransaction.getTransaction_id() + "",
+                    record.getProduct_id() + "",
+                    record.getAmount() + "",
+                    record.getPrice() + ""};
+                RecordDBModel newRecord = recourdService.InsertRecordByTransactionIDAndProductId(para);
+                return newTransaction;
+            } catch (SQLException ex) {
+                Logger.getLogger(TransactionRestAPI.class.getName()).log(Level.SEVERE, null, ex);
+                return null;
+            }
+        }
+        return null;
     }
 
     // display records of a transaction
@@ -61,7 +64,7 @@ public class TransactionRestAPI {
     @ResponseBody
     public List<RecordDBModel> showRecords(@PathVariable String transaction_id, HttpSession session)
             throws UnsupportedEncodingException, SQLException {
-        
+
         List<RecordDBModel> list = recourdService.GetRecordByTransactionID(transaction_id);
         for (int i = 0; i < list.size(); i++) {
             RecordDBModel r = list.get(i);
@@ -77,6 +80,6 @@ public class TransactionRestAPI {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        
+
     }
 }

@@ -68,7 +68,7 @@
                                 <input class="form-control" id="totle_money" type="text" disabled="">
                             </div>
                             <div class="col-sm-2">
-                                <button class="btn btn-primary btn-block" type="button" onclick="checkout()">Check out</button>
+                                <button class="btn btn-primary btn-block" type="button" id="checkout-button">Check out</button>
                             </div>
                         </div>        
 

@@ -1,6 +1,8 @@
 $(function() {
     $("#history-table button").on("click", function() {
         var transaction_id = $(this).attr("data-id");
+        var display = $("#recordDisplay").html("");
+
         $.ajax({
             type: "GET",
             url: "/eBusiness/rest/transaction/records/" + transaction_id,
@@ -9,10 +11,10 @@ $(function() {
             success: function(records) {
                 $.each(records,function(index,record){
 					console.log(record);
-					$("#recordDisplay").append("<tr><td>" + record.product_id + "</td>\n\
+					display.append("<tr><td>" + record.product_id + "</td>\n\
                                 <td>" + record.product.product_name + "</td>\n\
                                 <td>" + record.amount + "</td>\n\
-                                <td>" + record.price + "</td></tr>")
+                                <td>" + record.price + "</td></tr>");
                 });
             },
             error: function() {

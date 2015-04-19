@@ -26,6 +26,34 @@ $(function() {
     $(".delcolumn button").on("click",function(){
         removeProduct($(this).attr("data-id"));
     });
+
+    $("#checkout-button").on("click",function(){
+        var cart = JSON.parse(sessionStorage.getItem("bag"));
+        var recordList = [];
+        $.each(cart,function(index,product){
+            var amount_box = $("#amount_box_"+product.product_id);
+            var record = {
+                "product_id": product.product_id,
+                "amount": amount_box.val(),
+                "price": product.price
+            };
+            recordList.push(record);
+        });
+        console.log(recordList);
+        $.ajax({
+            type: "PUT",
+            url: "/eBusiness/rest/transaction/checkout",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(recordList),
+            success: function(transaction) {
+                console.log(transaction);
+            },
+            error: function() {
+                console.log("fail");
+            }
+        });
+    });
 });
 
 function cart() {
@@ -63,7 +91,6 @@ function total_amount() {
     var totalDisplay = $("#totle_money");
     
     var total = 0;
-    //alert(1);
     for (var i = 0; i < cart.length; i++) {
         var product = cart[i];
         var amount = $("#amount_box_" + product.product_id).val();
